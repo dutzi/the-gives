@@ -7,12 +7,21 @@ import Counter from './components/Counter';
 import { Provider } from 'react-redux';
 import store from './state/store';
 import Home from './pages/Home';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Room from './pages/Room';
 
 function App() {
   const { t } = useTranslation();
   return (
     <Provider store={store}>
-      <Home />
+      <Router>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/w/:videoId">
+          <Room />
+        </Route>
+      </Router>
     </Provider>
   );
 }

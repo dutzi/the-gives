@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "@types/redux-logger": "^3.0.7",
+    "firebase": "^7.14.1",
     "gsap": "^3.2.6",
     "i18next": "^19.3.2",
     "lodash.debounce": "^4.0.8",
@@ -22,6 +23,8 @@
     "react-dom": "^16.13.0",
     "react-i18next": "^11.3.3",
     "react-redux": "^7.2.0",
+    "react-route-transition": "^1.0.5",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux-logger": "^3.0.6",
     "typescript": "~3.7.2",
@@ -32,7 +35,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "delete-source-maps": "rm ./build/static/js/*.map && rm ./build/static/css/*.map",
+    "deploy-hosting": "yarn build && yarn delete-source-maps && firebase deploy --only hosting",
+    "deploy-functions": "firebase deploy --only functions",
+    "deploy-laravel": "yarn build && yarn delete-source-maps && node ./scripts/deploy",
+    "analyze": "source-map-explorer --gzip 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,6 +61,7 @@
     "@types/gapi": "^0.0.39",
     "@types/gapi.client.youtube": "v3",
     "@types/lodash.debounce": "^4.0.6",
+    "@types/react-router-dom": "^5.1.4",
     "ensure-localhost": "^0.0.3"
   }
 }
