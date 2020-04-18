@@ -3,6 +3,8 @@ import styles from './index.module.scss';
 import { IRoom, IRoomParams } from '../../types';
 import { useRouteMatch } from 'react-router-dom';
 import { roomDocRef } from '../../firestore-refs';
+import { getCurrentUserUID } from '../../utils';
+import useRoomId from '../../hooks/use-room-id';
 
 const configuration = {
   iceServers: [
@@ -14,12 +16,44 @@ const configuration = {
 };
 
 export default ({ room }: { room?: IRoom }) => {
-  const match = useRouteMatch<IRoomParams>();
   const [peerConnection, setPeerConnection] = useState<RTCPeerConnection>();
   const [localStream, setLocalStream] = useState<MediaStream | null>(null);
   const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
+  const [hasInitialized, setHasInitialized] = useState(false);
+  const roomId = useRoomId();
+
+  const registerPeerConnectionListeners = useCallback(
+    (peerConnection) => {
+      peerConnection.addEventListener('icegatheringstatechange', () => {
+        console.log(
+          `ICE gathering state changed: ${peerConnection.iceGatheringState}`
+        );
+      });
+
+      peerConnection.addEventListener('connectionstatechange', () => {
+        console.log(
+          `Connection state change: ${peerConnection.connectionState}`
+        );
+
+        if (peerConnection.connectionState === 'disconnected') {
+          roomDocRef(roomId).set({ answer: null } as IRoom, { merge: true });
+        }
+      });
+
+      peerConnection.addEventListener('signalingstatechange', () => {
+        console.log(`Signaling state change: ${peerConnection.signalingState}`);
+      });
+
+      peerConnection.addEventListener('iceconnectionstatechange ', () => {
+        console.log(
+          `ICE connection state change: ${peerConnection.iceConnectionState}`
+        );
+      });
+    },
+    [roomId]
+  );
 
   const createRoom = useCallback(async () => {
     if (!localStream) {
@@ -34,13 +68,15 @@ export default ({ room }: { room?: IRoom }) => {
 
     const peerConnection = new RTCPeerConnection(configuration);
 
+    registerPeerConnectionListeners(peerConnection);
+
     localStream.getTracks().forEach((track) => {
       peerConnection.addTrack(track, localStream);
     });
 
-    const callerCandidatesCollection = roomDocRef(
-      match.params.roomId
-    ).collection('callerCandidates');
+    const callerCandidatesCollection = roomDocRef(roomId).collection(
+      'callerCandidates'
+    );
 
     peerConnection.addEventListener('icecandidate', (event) => {
       if (!event.candidate) {
@@ -61,7 +97,7 @@ export default ({ room }: { room?: IRoom }) => {
       },
     } as IRoom;
 
-    const roomRef = roomDocRef(match.params.roomId);
+    const roomRef = roomDocRef(roomId);
 
     await roomRef.set(room, { merge: true });
 
@@ -95,34 +131,7 @@ export default ({ room }: { room?: IRoom }) => {
     setPeerConnection(peerConnection);
 
     return peerConnection;
-  }, [match.params.roomId, localStream, remoteStream]);
-
-  const awaitOtherToJoin = useCallback(
-    async (peerConnection: RTCPeerConnection) => {
-      debugger;
-      if (!peerConnection) {
-        throw new Error('peerConnection is missing');
-      }
-
-      roomDocRef(match.params.roomId).onSnapshot(async (snapshot) => {
-        console.log('Got updated room:', snapshot.data());
-        const data = snapshot.data();
-
-        if (!data) {
-          throw new Error('room snapshot data is missing');
-        }
-
-        if (!peerConnection.currentRemoteDescription && data.answer) {
-          console.log('Set remote description: ', data.answer);
-          const answer = new RTCSessionDescription(data.answer);
-          await peerConnection.setRemoteDescription(answer);
-        }
-      });
-
-      return peerConnection;
-    },
-    [match.params.roomId]
-  );
+  }, [roomId, localStream, remoteStream]);
 
   const joinRoom = useCallback(async () => {
     console.log('join room');
@@ -143,12 +152,14 @@ export default ({ room }: { room?: IRoom }) => {
     }
 
     const peerConnection = new RTCPeerConnection(configuration);
-    // registerPeerConnectionListeners();
+
+    registerPeerConnectionListeners(peerConnection);
+
     localStream.getTracks().forEach((track) => {
       peerConnection.addTrack(track, localStream);
     });
 
-    const roomRef = roomDocRef(match.params.roomId);
+    const roomRef = roomDocRef(roomId);
     // Code for collecting ICE candidates below
     const calleeCandidatesCollection = roomRef.collection('calleeCandidates');
     peerConnection.addEventListener('icecandidate', (event) => {
@@ -202,68 +213,15 @@ export default ({ room }: { room?: IRoom }) => {
         }
       });
     });
-  }, [room, match.params.roomId, localStream, remoteStream]);
 
-  const collectIceCandidates = useCallback(
-    async (peerConnection: RTCPeerConnection) => {
-      if (!room) {
-        throw new Error('room is undefined');
-      }
-
-      if (!peerConnection) {
-        throw new Error('peerConnection is undefined');
-      }
-
-      const roomRef = roomDocRef(match.params.roomId);
-
-      const candidatesCollection = roomRef.collection('localName');
-
-      peerConnection.addEventListener('icecandidate', (event) => {
-        if (event.candidate) {
-          const json = event.candidate.toJSON();
-          candidatesCollection.add(json);
-        }
-      });
-
-      roomRef.collection('remoteName').onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-          if (change.type === 'added') {
-            const candidate = new RTCIceCandidate(change.doc.data());
-            peerConnection.addIceCandidate(candidate);
-          }
-        });
-      });
-
-      return peerConnection;
-    },
-    [room, match.params.roomId]
-  );
-
-  const initStreams = useCallback(
-    (peerConnection: RTCPeerConnection) => {
-      if (!localStream) {
-        throw new Error('localStream is missing');
-      }
-      if (!remoteStream) {
-        throw new Error('remoteStream is missing');
-      }
-
-      localStream.getTracks().forEach((track) => {
-        peerConnection.addTrack(track, localStream);
-      });
-
-      peerConnection.addEventListener('track', (event) => {
-        console.log('Got remote track:', event.streams[0]);
-        event.streams[0].getTracks().forEach((track) => {
-          console.log('Add a track to the remoteStream:', track);
-          remoteStream.addTrack(track);
-        });
-      });
-
-      return peerConnection;
-    },
-    [localStream, remoteStream]
-  );
+    setPeerConnection(peerConnection);
+  }, [
+    room,
+    roomId,
+    localStream,
+    remoteStream,
+    registerPeerConnectionListeners,
+  ]);
 
   useEffect(() => {
     if (!localStream) {
@@ -278,31 +236,18 @@ export default ({ room }: { room?: IRoom }) => {
       return;
     }
 
-    if (peerConnection) {
+    if (hasInitialized) {
       return;
     }
 
-    console.log(room.offer);
+    setHasInitialized(true);
 
-    if (room.offer) {
-      joinRoom(); //.then(collectIceCandidates).then(initStreams);
+    if (room.host !== getCurrentUserUID()) {
+      joinRoom();
     } else {
       createRoom();
-      // .then(collectIceCandidates)
-      // .then(initStreams)
-      // .then(awaitOtherToJoin);
     }
-  }, [
-    room,
-    createRoom,
-    awaitOtherToJoin,
-    joinRoom,
-    collectIceCandidates,
-    peerConnection,
-    localStream,
-    remoteStream,
-    initStreams,
-  ]);
+  }, [room, createRoom, joinRoom, hasInitialized, localStream, remoteStream]);
 
   const openUserMedia = useCallback(async () => {
     if (

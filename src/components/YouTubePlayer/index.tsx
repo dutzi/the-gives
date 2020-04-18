@@ -11,6 +11,9 @@ let youtubeIframeAPIReady = false;
   youtubeIframeAPIReady = true;
 };
 
+const videoWidth = 640;
+const videoHeight = (videoWidth * 9) / 16;
+
 export default ({ videoId }: { videoId?: string }) => {
   const [isPlayerReady, setIsPlayerReady] = useState(youtubeIframeAPIReady);
   const [player, setPlayer] = useState<YT.Player>();
@@ -35,9 +38,12 @@ export default ({ videoId }: { videoId?: string }) => {
     }
 
     let player = new YT.Player('player', {
-      height: '292',
-      width: '480',
+      height: videoHeight,
+      width: videoWidth,
       videoId: videoId,
+      playerVars: {
+        fs: 0,
+      },
       events: {
         onReady: (window as any).onPlayerReady,
         // onStateChange: onPlayerStateChange,

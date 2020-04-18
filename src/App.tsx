@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Room from './pages/Room';
 import { version } from '../package.json';
+import FireAuth from './components/FireAuth';
 
 function App() {
   useEffect(() => {
@@ -14,14 +15,16 @@ function App() {
   }, []);
   return (
     <Provider store={store}>
-      <Router>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/w/:roomId">
-          <Room />
-        </Route>
-      </Router>
+      <FireAuth>
+        <Router>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/w/:roomId">
+            <Room />
+          </Route>
+        </Router>
+      </FireAuth>
     </Provider>
   );
 }

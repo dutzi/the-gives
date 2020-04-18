@@ -15,6 +15,8 @@ export interface IRoom {
     sdp?: string;
   };
   answer?: any; // Todo: type
+  remoteOwner: string;
+  host: string;
 }
 
 export interface IRoomParams {

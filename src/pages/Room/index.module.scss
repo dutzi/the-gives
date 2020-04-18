@@ -1,3 +1,5 @@
+$videoWidth: 640px;
+
 .wrapper {
   .header {
     background: linear-gradient(#a5ccf3, #bae1fc);
@@ -20,6 +22,11 @@
         color: #ffeb03;
         text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
         filter: drop-shadow(0px 1px 1px #00000044);
+
+        svg {
+          width: 160px;
+          margin-top: 8px;
+        }
       }
 
       .search {
@@ -27,14 +34,15 @@
         bottom: -15px;
         z-index: 1;
         left: 190px;
-        width: 100%;
+        right: 0px;
 
         .searchBox {
           input {
             outline: none;
             background: #ffffff;
             border-radius: 15px;
-            width: calc(100% - 235px);
+            width: 100%;
+            box-sizing: border-box;
             max-width: 600px;
             border: none;
             box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.13);
@@ -61,17 +69,23 @@
     margin-top: 3.5em;
     display: flex;
 
-    .playerWrapper {
+    .leftPane {
       border-radius: 15px;
       overflow: hidden;
       display: inline-block;
       line-height: 0;
-      flex: 0 0 auto;
+      flex: 0 0 $videoWidth;
       margin-inline-end: 2em;
+      align-self: center;
+
+      .playerWrapper {
+        height: $videoWidth * 9 / 16;
+      }
 
       .remoteStateIndicaator {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         background: #212121;
         line-height: 1.5;
         color: white;
@@ -86,8 +100,13 @@
       }
     }
 
-    .videoChatWrapper {
-      flex: 0 0 250px;
+    .rightPane {
+      flex: 0 1 auto;
     }
+  }
+
+  .innerFlex {
+    display: flex;
+    align-items: inherit;
   }
 }

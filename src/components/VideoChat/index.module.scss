@@ -1,6 +1,11 @@
 .wrapper {
   .localVideoWrapper,
   .remoteVideoWrapper {
+    line-height: 0px;
+  }
+
+  .localVideoWrapper {
+    margin-bottom: 1em;
   }
 
   video {

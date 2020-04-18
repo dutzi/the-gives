@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { IVideo } from '../../types';
 import { roomColRef } from '../../firestore-refs';
 import { ReactComponent as Logo } from '../../svgs/logo.svg';
+import { getCurrentUserUID } from '../../utils';
 
 type TMode = 'home' | 'search';
 
@@ -96,7 +97,12 @@ export default () => {
 
   async function handleVideoClick(video: IVideo, e: React.MouseEvent) {
     e.preventDefault();
-    const room = await roomColRef().add({ video, platform: 'youtube' });
+    const room = await roomColRef().add({
+      video,
+      platform: 'youtube',
+      remoteOwner: getCurrentUserUID(),
+      host: getCurrentUserUID(),
+    });
     history.push(`/w/${room.id}`);
   }
 
