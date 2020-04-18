@@ -32,6 +32,7 @@
   },
   "scripts": {
     "prestart": "ensure-localhost",
+    "postinstall": "patch-package",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -62,6 +63,7 @@
     "@types/gapi.client.youtube": "v3",
     "@types/lodash.debounce": "^4.0.6",
     "@types/react-router-dom": "^5.1.4",
+    "@types/youtube": "^0.0.38",
     "ensure-localhost": "^0.0.3"
   }
 }

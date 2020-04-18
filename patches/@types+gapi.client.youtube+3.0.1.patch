@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/gapi.client.youtube/index.d.ts b/node_modules/@types/gapi.client.youtube/index.d.ts
+index b39975c..0d72db4 100644
+--- a/node_modules/@types/gapi.client.youtube/index.d.ts
++++ b/node_modules/@types/gapi.client.youtube/index.d.ts
+@@ -11,7 +11,7 @@
+ 
+ /// <reference types="gapi.client" />
+ 
+-declare namespace gapi.client {
++declare namespace gapi.client.youtube {
+     /** Load YouTube Data API v3 */
+     function load(name: "youtube", version: "v3"): PromiseLike<void>;
+     function load(name: "youtube", version: "v3", callback: () => any): void;

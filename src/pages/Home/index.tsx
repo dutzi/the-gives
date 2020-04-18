@@ -7,15 +7,10 @@ import * as youtube from '../../clients/youtube';
 import debounce from 'lodash.debounce';
 import firebase from 'firebase/app';
 import { useHistory } from 'react-router-dom';
+import { IVideo } from '../../types';
+import { roomColRef } from '../../firestore-refs';
 
 type TMode = 'home' | 'search';
-
-interface IVideo {
-  id?: string;
-  title?: string;
-  description?: string;
-  thumbnail?: string;
-}
 
 export default () => {
   const { t } = useTranslation();
@@ -56,6 +51,7 @@ export default () => {
       gsap.timeline().to('[data-hero]', {
         opacity: 0,
         duration: 0.6,
+        pointerEvents: 'none',
         ease: Back.easeInOut.config(1.7),
       });
     } else {
@@ -94,9 +90,9 @@ export default () => {
     search(query);
   }, [query, search]);
 
-  async function handleVideoClick(e: React.MouseEvent) {
+  async function handleVideoClick(video: IVideo, e: React.MouseEvent) {
     e.preventDefault();
-    const room = await firebase.firestore().collection('/rooms').add({});
+    const room = await roomColRef().add({ video, platform: 'youtube' });
     history.push(`/w/${room.id}`);
   }
 
@@ -125,12 +121,12 @@ export default () => {
         </div>
       </header>
 
-      <div className={styles.searchResults}>
+      <main className={styles.searchResults}>
         {videos.map((video) => (
           <a
             key={video.id}
             href={`/create-room/yt_${video.id}`}
-            onClick={handleVideoClick}
+            onClick={handleVideoClick.bind(null, video)}
             className={styles.video}
           >
             <img
@@ -144,7 +140,7 @@ export default () => {
             </div>
           </a>
         ))}
-      </div>
+      </main>
     </div>
   );
 };

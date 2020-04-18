@@ -1,8 +1,8 @@
 .wrapper {
   .header {
     background: linear-gradient(#a5ccf3, #bae1fc);
-    height: 260px;
-    padding: 2em;
+    height: 68px;
+    padding: 0.6em 2em;
     box-sizing: border-box;
     position: relative;
 
@@ -10,39 +10,35 @@
       max-width: 980px;
       margin: auto;
       position: relative;
-      height: 260px;
+      height: 68px;
 
       .logo {
         display: inline-block;
         transform-origin: 0 0;
         font-family: 'phosphate-solid';
-        font-size: 2.81em;
+        font-size: 2.3125em;
         color: #ffeb03;
         text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-        margin-bottom: 0.8em;
-      }
-
-      .tagline {
-        font-family: 'Copernicus';
-        font-size: 1.65em;
       }
 
       .search {
         position: absolute;
-        bottom: 0px;
+        bottom: -15px;
         z-index: 1;
+        left: 190px;
+        width: 100%;
 
         .searchBox {
           input {
             outline: none;
             background: #ffffff;
             border-radius: 15px;
-            width: 100vw;
+            width: calc(100% - 235px);
             max-width: 600px;
             border: none;
             box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.13);
-            font-size: 1.7em;
-            padding: 15px;
+            font-size: 1.3em;
+            padding: 12px;
           }
         }
       }
@@ -58,35 +54,30 @@
     }
   }
 
-  .searchResults {
+  .main {
     max-width: 980px;
     margin: auto;
     margin-top: 3.5em;
 
-    .video {
-      display: flex;
-      margin-bottom: 2em;
-      color: inherit;
-      text-decoration: none;
+    .playerWrapper {
+      border-radius: 15px;
+      overflow: hidden;
+      display: inline-block;
+      line-height: 0;
 
-      .thumbnail {
-        box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.13);
-        border-radius: 15px;
-        width: 227px;
-        height: 156px;
-        object-fit: cover;
-        margin-inline-end: 1.75em;
-        flex: 0 0 auto;
-      }
+      .remoteStateIndicaator {
+        display: flex;
+        align-items: center;
+        background: #212121;
+        line-height: 1.5;
+        color: white;
+        padding: 0.5em 0.8em;
+        font-size: 1.2em;
 
-      .metadata {
-        .title {
-          margin-bottom: 0.5em;
-          font-size: 1.75em;
-        }
-
-        .description {
-          color: #999999;
+        .icon {
+          width: 40px;
+          color: white;
+          margin-inline-end: 0.7em;
         }
       }
     }
