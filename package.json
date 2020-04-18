@@ -1,6 +1,6 @@
 {
-  "name": "insurance",
-  "version": "0.1.0",
+  "name": "the-gives",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",
@@ -38,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "delete-source-maps": "rm ./build/static/js/*.map && rm ./build/static/css/*.map",
-    "deploy-hosting": "yarn build && yarn delete-source-maps && firebase deploy --only hosting",
+    "deploy-hosting": "npm version patch --force && yarn build && yarn delete-source-maps && firebase deploy --only hosting",
     "deploy-functions": "firebase deploy --only functions",
     "deploy-laravel": "yarn build && yarn delete-source-maps && node ./scripts/deploy",
     "analyze": "source-map-explorer --gzip 'build/static/js/*.js'"
