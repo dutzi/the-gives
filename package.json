@@ -14,7 +14,10 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "@types/redux-logger": "^3.0.7",
+    "gsap": "^3.2.6",
     "i18next": "^19.3.2",
+    "lodash.debounce": "^4.0.8",
+    "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-i18next": "^11.3.3",
@@ -25,6 +28,7 @@
     "unflatten": "^1.0.4"
   },
   "scripts": {
+    "prestart": "ensure-localhost",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,5 +48,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/gapi": "^0.0.39",
+    "@types/gapi.client.youtube": "v3",
+    "@types/lodash.debounce": "^4.0.6",
+    "ensure-localhost": "^0.0.3"
   }
 }

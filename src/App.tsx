@@ -6,26 +6,13 @@ import './i18n';
 import Counter from './components/Counter';
 import { Provider } from 'react-redux';
 import store from './state/store';
+import Home from './pages/Home';
 
 function App() {
   const { t } = useTranslation();
   return (
     <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{t('Welcome')}</p>
-          <Counter />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Home />
     </Provider>
   );
 }

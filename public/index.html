@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      gapi.load('client:auth2', function () {
+        gapi.auth2.init({
+          client_id:
+            '748685084660-tc9d7dqjc3re9ude59o28ii72jvl0dbs.apps.googleusercontent.com',
+        });
+      });
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
