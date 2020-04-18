@@ -4,12 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useRouteMatch } from 'react-router-dom';
 import YouTubePlayer from '../../components/YouTubePlayer';
 import { ReactComponent as GamepadIcon } from '../../svgs/gamepad.svg';
-import { IRoom } from '../../types';
+import { IRoom, IRoomParams } from '../../types';
 import { roomDocRef } from '../../firestore-refs';
-
-interface IRoomParams {
-  roomId: string;
-}
+import VideoChat from '../../components/VideoChat';
+import { ReactComponent as Logo } from '../../svgs/logo.svg';
 
 export default () => {
   const { t } = useTranslation();
@@ -29,7 +27,7 @@ export default () => {
       <header data-header className={styles.header}>
         <div data-content className={styles.content}>
           <div data-logo className={styles.logo}>
-            THE.GIVES
+            <Logo />
           </div>
           <div className={styles.search}>
             <div className={styles.searchBox}>
@@ -44,8 +42,13 @@ export default () => {
           <YouTubePlayer videoId={room?.video.id} />
           <div className={styles.remoteStateIndicaator}>
             <GamepadIcon className={styles.icon} />
-            <div className={styles.removeState}>{t('You have the remote')}</div>
+            <div className={styles.removeState}>
+              {t("You've got the remote")}
+            </div>
           </div>
+        </div>
+        <div className={styles.videoChatWrapper}>
+          <VideoChat room={room} />
         </div>
       </main>
     </div>

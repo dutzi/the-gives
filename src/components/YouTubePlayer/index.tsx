@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import counterSlice from './reducers';
-import { useTypedSelector } from '../../state/store';
 
 let youtubeIframeAPIReady = false;
 
@@ -15,17 +12,16 @@ let youtubeIframeAPIReady = false;
 };
 
 export default ({ videoId }: { videoId?: string }) => {
-  // const dispatch = useDispatch();
-  // const counter = useTypedSelector((state) => state.counter);
   const [isPlayerReady, setIsPlayerReady] = useState(youtubeIframeAPIReady);
   const [player, setPlayer] = useState<YT.Player>();
 
   useEffect(() => {
     if (!youtubeIframeAPIReady) {
-      // throw new Error('Player not ready');
       (window as any).onYouTubeIframeAPIReady = (e: any) => {
         setIsPlayerReady(true);
       };
+    } else {
+      setIsPlayerReady(true);
     }
   }, []);
 
@@ -39,8 +35,8 @@ export default ({ videoId }: { videoId?: string }) => {
     }
 
     let player = new YT.Player('player', {
-      height: '390',
-      width: '640',
+      height: '292',
+      width: '480',
       videoId: videoId,
       events: {
         onReady: (window as any).onPlayerReady,

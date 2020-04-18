@@ -9,6 +9,7 @@ import firebase from 'firebase/app';
 import { useHistory } from 'react-router-dom';
 import { IVideo } from '../../types';
 import { roomColRef } from '../../firestore-refs';
+import { ReactComponent as Logo } from '../../svgs/logo.svg';
 
 type TMode = 'home' | 'search';
 
@@ -70,13 +71,16 @@ export default () => {
         return;
       }
 
+      console.log({ results });
       setVideos(
-        results.map((result) => ({
-          id: result.id?.videoId,
-          title: result.snippet?.title,
-          description: result.snippet?.description,
-          thumbnail: result.snippet?.thumbnails?.medium?.url,
-        }))
+        results
+          .filter((result) => result.id?.kind === 'youtube#video')
+          .map((result) => ({
+            id: result.id?.videoId,
+            title: result.snippet?.title,
+            description: result.snippet?.description,
+            thumbnail: result.snippet?.thumbnails?.medium?.url,
+          }))
       );
     }, 250),
     []
@@ -101,7 +105,7 @@ export default () => {
       <header data-header className={styles.header}>
         <div data-content className={styles.content}>
           <div data-logo className={styles.logo}>
-            THE.GIVES
+            <Logo />
           </div>
           <div data-tagline className={styles.tagline}>
             {t('Watch video with friends.')}
