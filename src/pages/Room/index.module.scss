@@ -1,6 +1,20 @@
-$videoWidth: 640px;
+@import '../../partials.module';
+
+// $videoWidth: 640px;
+
+// @include mobile {
+//   $videoWidth: calc(100vw)
+// }
 
 .wrapper {
+  --video-width: 640px;
+  --video-height: calc(640px * 9 / 16);
+
+  @include mobile {
+    --video-width: calc(100vw - 2em);
+    --video-height: calc((100vw - 2em) * 9 / 16);
+  }
+
   .header {
     background: linear-gradient(#a5ccf3, #bae1fc);
     height: 68px;
@@ -63,45 +77,86 @@ $videoWidth: 640px;
     }
   }
 
-  .main {
+  .container {
     max-width: 980px;
     margin: auto;
     margin-top: 3.5em;
-    display: flex;
 
-    .leftPane {
-      border-radius: 15px;
-      overflow: hidden;
-      display: inline-block;
-      line-height: 0;
-      flex: 0 0 $videoWidth;
-      margin-inline-end: 2em;
-      align-self: center;
+    @include mobile {
+      margin: 3.5em 1em 0px;
+    }
 
-      .playerWrapper {
-        height: $videoWidth * 9 / 16;
+    .videoAndVideoChat {
+      display: flex;
+
+      @include mobile {
+        flex-direction: column;
       }
 
-      .remoteStateIndicaator {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #212121;
-        line-height: 1.5;
-        color: white;
-        padding: 0.5em 0.8em;
-        font-size: 1.2em;
+      .leftPane {
+        border-radius: 15px;
+        overflow: hidden;
+        display: inline-block;
+        line-height: 0;
+        flex: 0 0 var(--video-width);
+        margin-inline-end: 2em;
+        align-self: center;
+        // fix mobile iOS issue where border-radius not applied
+        z-index: 1;
 
-        .icon {
-          width: 40px;
+        @include mobile {
+          flex: 0 0 auto;
+          margin-inline-end: 0px;
+          margin-bottom: 1em;
+        }
+
+        .playerWrapper {
+          height: var(--video-height);
+        }
+
+        .remoteStateIndicaator {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #212121;
+          line-height: 1.5;
           color: white;
-          margin-inline-end: 0.7em;
+          padding: 0.5em 0.8em;
+          font-size: 1.2em;
+
+          .icon {
+            width: 40px;
+            color: white;
+            margin-inline-end: 0.7em;
+          }
+        }
+      }
+
+      .rightPane {
+        flex: 0 1 auto;
+      }
+    }
+
+    .shareBox {
+      .shareLink {
+        width: 640px;
+        box-sizing: border-box;
+        padding: 7px 8px;
+        font-size: 1.1em;
+        font-family: inherit;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+
+        @include mobile {
+          width: 100%;
         }
       }
     }
 
-    .rightPane {
-      flex: 0 1 auto;
+    .actions {
+      @include mobile {
+        display: none;
+      }
     }
   }
 

@@ -19,6 +19,11 @@ export interface IRoom {
   host: string;
 }
 
+export interface IPlaybackState {
+  isPlaying: boolean;
+  currentTime: number;
+}
+
 export interface IRoomParams {
   roomId: string;
 }

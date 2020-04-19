@@ -1,0 +1,811 @@
+{
+  "results": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/1t-eriM8f-u4D2Q6fQBBDDFtCS0\"",
+      "id": {
+        "kind": "youtube#channel",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ"
+      },
+      "snippet": {
+        "publishedAt": "2014-03-18T17:41:39.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "LastWeekTonight",
+        "description": "Breaking news on a weekly basis. Sundays at 11PM - only on HBO. Subscribe to the Last Week Tonight channel for the latest videos from John Oliver and the ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/-lc3LinEhpgA/AAAAAAAAAAI/AAAAAAAAAAA/A6-FbtNyNgU/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/-lc3LinEhpgA/AAAAAAAAAAI/AAAAAAAAAAA/A6-FbtNyNgU/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/-lc3LinEhpgA/AAAAAAAAAAI/AAAAAAAAAAA/A6-FbtNyNgU/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/ysvp56XOQkk1yxttZcpNQ6if5SQ\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "6s4Bx7mzNkM"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-13T06:45:02.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "Coronavirus IV: Last Week Tonight with John Oliver (HBO)",
+        "description": "John Oliver discusses how Coronavirus is impacting the US workforce, from mass unemployment to the problems faced by essential workers. Connect with Last ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/6s4Bx7mzNkM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/6s4Bx7mzNkM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/6s4Bx7mzNkM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/u9NwTWdYjlLYQdZT7UA5UgtBkMw\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ElIf2DBrWzU"
+      },
+      "snippet": {
+        "publishedAt": "2020-03-30T06:30:02.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "Coronavirus III: Last Week Tonight with John Oliver (HBO)",
+        "description": "As the coronavirus continues to spread across the globe, John Oliver discusses President Trump's inconsistent response to the pandemic, including his ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ElIf2DBrWzU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ElIf2DBrWzU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ElIf2DBrWzU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/Zlwgu6GO7nhX_5QwCXosV-KfTlI\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "UnSILVWDKL8"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-06T06:30:02.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "OAN: Last Week Tonight with John Oliver (HBO)",
+        "description": "One America News, or OAN, is a far-right news network being embraced by President Trump at his coronavirus press briefings. John Oliver takes a look at who ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/UnSILVWDKL8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/UnSILVWDKL8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/UnSILVWDKL8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/8qa3xk7LHXUNEhwtyn53B2hRwB0\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "_066dEkycr4"
+      },
+      "snippet": {
+        "publishedAt": "2020-03-16T06:30:02.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "Coronavirus II: Last Week Tonight with John Oliver (HBO)",
+        "description": "As the spread of coronavirus worsens in the US, John Oliver discusses how the government is handling the outbreak, how they're not, and what we can do to ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/_066dEkycr4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/_066dEkycr4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/_066dEkycr4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/_UOVv281fWFVMB-kg_cwAZ3YqNA\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "5zjGg_oXvxo"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-18T17:00:02.000Z",
+        "channelId": "UC-EVnno6x6-aAG6g1ZVoN3A",
+        "title": "Oliver Heldens - Heldeep Radio #305",
+        "description": "HeldeepRadio 305 is live! Check out some amazing new music from the likes of Camelphat & Artbat, Diplo & Wax Motif, Funkin Matt, Joyryde, Main Circus, ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/5zjGg_oXvxo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/5zjGg_oXvxo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/5zjGg_oXvxo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Oliver Heldens",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/Oar34kCWOYeFPKlDqN5CXBejNQg\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "c09m5f7Gnic"
+      },
+      "snippet": {
+        "publishedAt": "2020-03-02T07:30:02.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "Coronavirus: Last Week Tonight with John Oliver (HBO)",
+        "description": "As coronavirus spreads to the US, John Oliver discusses what's being done to fight the illness, what's gone wrong, and how to stay safe. Connect with Last Week ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/c09m5f7Gnic/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/c09m5f7Gnic/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/c09m5f7Gnic/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/BYLDAe6xqb-lRPiFnki-vL7DFYE\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "FxG-7AsbjeI"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-07T16:00:11.000Z",
+        "channelId": "UCHcb3FQivl6xCRcHC2zjdkQ",
+        "title": "Oliver Tree - Let Me Down [Official Music Video]",
+        "description": "Download/stream: http://olivertree.lnk.to/LetMeDownID Win a Quarantine Survival Kit with an Oculus Quest & more: https://olivertree.lnk.to/COVIDSweeps I wrote ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FxG-7AsbjeI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FxG-7AsbjeI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FxG-7AsbjeI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Oliver Tree",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/E9osZrPB1gA45qOJMoVLPjVfVcU\"",
+      "id": {
+        "kind": "youtube#channel",
+        "channelId": "UCHcb3FQivl6xCRcHC2zjdkQ"
+      },
+      "snippet": {
+        "publishedAt": "2017-05-17T18:43:16.000Z",
+        "channelId": "UCHcb3FQivl6xCRcHC2zjdkQ",
+        "title": "Oliver Tree",
+        "description": "\"LET ME DOWN\" OUT NOW!",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/-8dICXNqOqRc/AAAAAAAAAAI/AAAAAAAAAAA/Kaag2pEs05g/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/-8dICXNqOqRc/AAAAAAAAAAI/AAAAAAAAAAA/Kaag2pEs05g/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/-8dICXNqOqRc/AAAAAAAAAAI/AAAAAAAAAAA/Kaag2pEs05g/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          }
+        },
+        "channelTitle": "Oliver Tree",
+        "liveBroadcastContent": "upcoming"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/5nVCkYmfkLuijWCqi6I--PpwE80\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "qVIXUhZ2AWs"
+      },
+      "snippet": {
+        "publishedAt": "2020-02-24T07:30:01.000Z",
+        "channelId": "UC3XTzVzaHQEd30rQbuvCtTQ",
+        "title": "Modi: Last Week Tonight with John Oliver (HBO)",
+        "description": "John Oliver talks about India's Prime Minister, Narendra Modi, why he's popular, why he's controversial, and where things are headed for the largest democracy ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/qVIXUhZ2AWs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/qVIXUhZ2AWs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/qVIXUhZ2AWs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "LastWeekTonight",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/ohWHef5j3mtOjAkmGiDSLd0fLgY\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "iglGiquAxmU"
+      },
+      "snippet": {
+        "publishedAt": "2017-05-02T16:02:03.000Z",
+        "channelId": "UCL-rTfzrpQq9hjIrufLY6ug",
+        "title": "Oliver - Väikesed hiiglased - 6. saade (23.04)",
+        "description": "4-aastane Oliver andis seegi kord kohtunikele ühe mõistatuse lahendada ja üllatas ka lauluvalikuga, milleks oli \"Vana meremehe laul\" GALERIID, UUDISED ja ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/iglGiquAxmU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/iglGiquAxmU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/iglGiquAxmU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Kanal 2",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/l63KltzcMbCfDs_v8E0U1HGZx8w\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "5vqCoIIoznU"
+      },
+      "snippet": {
+        "publishedAt": "2017-09-21T08:57:02.000Z",
+        "channelId": "UCPDGaX2m9b9GgIct5CputKQ",
+        "title": "OLIVER DRAGOJEVIĆ - PISMO MOJA (OFFICIAL VIDEO)",
+        "description": "Deezer: http://bit.ly/2fuWEUu iTunes: http://apple.co/2wpOhE7 Spotify: http://spoti.fi/2yjKjdi.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/5vqCoIIoznU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/5vqCoIIoznU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/5vqCoIIoznU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Oliver Dragojević Crorec Official",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/WJbiVrotuLf7EPB2tCWFJ-roOFA\"",
+      "id": {
+        "kind": "youtube#channel",
+        "channelId": "UCqwoo_xmEHKXIKqKpYMqXNQ"
+      },
+      "snippet": {
+        "publishedAt": "2012-04-04T03:46:27.000Z",
+        "channelId": "UCqwoo_xmEHKXIKqKpYMqXNQ",
+        "title": "Oliver Francis",
+        "description": "https://twitter.com/oliverxfrancis.",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/-5Ntm231fsoE/AAAAAAAAAAI/AAAAAAAAAAA/za3AGoDSDdo/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/-5Ntm231fsoE/AAAAAAAAAAI/AAAAAAAAAAA/za3AGoDSDdo/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/-5Ntm231fsoE/AAAAAAAAAAI/AAAAAAAAAAA/za3AGoDSDdo/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+          }
+        },
+        "channelTitle": "Oliver Francis",
+        "liveBroadcastContent": "upcoming"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/XzzA4JKNSfLHsKKbJXtSPn2fdTs\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "CQP-etYU1ps"
+      },
+      "snippet": {
+        "publishedAt": "2012-03-19T20:33:34.000Z",
+        "channelId": "UCGqqBmeIiPLrnObcuOkEtag",
+        "title": "D&#39;banj - Oliver Twist (Official Video)",
+        "description": "Check out the official music video for \"Oliver Twist\" by D'banj DOWNLOAD OLIVER TWIST NOW ON iTUNES - http://bit.ly/K9yKn9 iTunes bundle includes: 1) ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/CQP-etYU1ps/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/CQP-etYU1ps/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/CQP-etYU1ps/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "DBanjVEVO",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/Vhwr8v99StvDjw250jI4CcmuDP8\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "o1Vgkxt1TP0"
+      },
+      "snippet": {
+        "publishedAt": "2016-04-19T21:51:34.000Z",
+        "channelId": "UCmMJ8hz6rsTzfbDT4tBGFIw",
+        "title": "Oliver Dragojević  MEGA MIX HIT PJESAMA 100 Minuta",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/o1Vgkxt1TP0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/o1Vgkxt1TP0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/o1Vgkxt1TP0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Balkanmusictubee",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/R7CAjkWFkPVpQdaTTXEgzi-51XE\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "YQt2u99U59E"
+      },
+      "snippet": {
+        "publishedAt": "2011-10-20T14:12:28.000Z",
+        "channelId": "UCEC0pExeylsoHZW9ZX4k8OA",
+        "title": "Oliver Dragojević - Trag u beskraju (tekst)",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/YQt2u99U59E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/YQt2u99U59E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/YQt2u99U59E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Djev0jcicaSaSibicama",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/AY_LFMB_PLzL6PnY9_beItOrH3g\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "bWSsU5mcxMk"
+      },
+      "snippet": {
+        "publishedAt": "2020-04-11T17:00:10.000Z",
+        "channelId": "UC-EVnno6x6-aAG6g1ZVoN3A",
+        "title": "Oliver Heldens - Heldeep Radio #304",
+        "description": "Get ready for a bunch of new music on this week's #HeldeepRadio! I'm dropping my brand new remix for SZA & Justin Timberlake, my new single with Boy ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/bWSsU5mcxMk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/bWSsU5mcxMk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/bWSsU5mcxMk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Oliver Heldens",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/-L4OUp9sygqmYtv2UkyJ31l2wvA\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ACJhyEc3ckA"
+      },
+      "snippet": {
+        "publishedAt": "2019-04-14T01:29:07.000Z",
+        "channelId": "UC9lniMBSHmQUXyNe02TOL4A",
+        "title": "Oliver Dragojević - najbolje pjesme",
+        "description": "Podrijetlom je iz Vele Luke na otoku Korčuli, (rođen 7. prosinca 1947.) gdje je proveo djetinjstvo, u Splitu je pohađao glazbenu školu. Karijeru je počeo daleke ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ACJhyEc3ckA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ACJhyEc3ckA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ACJhyEc3ckA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Barix",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/AWGOyFaNCOzbsqfiWibEjxaN3H0\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "O-11YWAUdbg"
+      },
+      "snippet": {
+        "publishedAt": "2013-07-04T05:22:44.000Z",
+        "channelId": "UC8E2und_IBFOSCw2tVClBwQ",
+        "title": "Oliver Samuels - Flight 007  / Oliver at Large series (Full Length)",
+        "description": "Oliver Samuels - Flight 007 episode from Oliver at Large series - Jamaica (1991) Starring Oliver Samuels The YouTube Channel for Jamaican Comedy.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/O-11YWAUdbg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/O-11YWAUdbg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/O-11YWAUdbg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jamaican Comedy",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/Viz8a6TwW5nVVgOnmxyJ7FfBMpE\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "TSz-wZzjht4"
+      },
+      "snippet": {
+        "publishedAt": "2019-04-14T07:47:42.000Z",
+        "channelId": "UCPoQ7Xf6VzzhBCsQdoH08Qw",
+        "title": "Oliver Dragojević - Dobro jutro tugo",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/TSz-wZzjht4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/TSz-wZzjht4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/TSz-wZzjht4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Kanal Kanal",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/jH_tMvTXYDvykA39tmV2SDTY05Q\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "6wXybwOYVMc"
+      },
+      "snippet": {
+        "publishedAt": "2010-09-02T10:37:48.000Z",
+        "channelId": "UCm3VSb_0u6LOX38LTnOdttg",
+        "title": "Oliver Dragojević - Kad mi dođeš ti",
+        "description": "Download on iTunes: http://itunes.apple.com/us/album/id378479027?i=378479080&ign-mpt=uo%3D4 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/6wXybwOYVMc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/6wXybwOYVMc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/6wXybwOYVMc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Croatia Records",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/XXrEqx5HGMYvZsqXuQiCvhbVuL8\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "w-5GtchLwFc"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-23T14:00:10.000Z",
+        "channelId": "UCKE8HAIVrpixOsQsAqQ_PZQ",
+        "title": "Oliver på natoptagelser: Skal være med i en ny serie | Replay | Ultra",
+        "description": "Se Replay her: https://www.dr.dk/drtv/serie/replay_152483?cid=soc_youtube_drultra(drultra)_post_eur6604v Hvis du kunne lide videoen, så giv den meget ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/w-5GtchLwFc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/w-5GtchLwFc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/w-5GtchLwFc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "DR Ultra",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/zF7uRbrMo4fCoYW8tCXtFDYeYCo\"",
+      "id": {
+        "kind": "youtube#playlist",
+        "playlistId": "PLHZqFx23JJe2dW5qAN3uee1DOJ7JbiS1t"
+      },
+      "snippet": {
+        "publishedAt": "2014-10-27T10:17:18.000Z",
+        "channelId": "UC64MSVQ7SMU4etqVE_d9ubg",
+        "title": "Oliver baby tv",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/O9FrhvNISeg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/O9FrhvNISeg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/O9FrhvNISeg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Chona Gutjahr",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/LiAEVijsqsGW2NQFmAOlySc4Yic\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "rrg-OAa1IAA"
+      },
+      "snippet": {
+        "publishedAt": "2015-07-27T16:00:01.000Z",
+        "channelId": "UCyCyTe_1bT2aIPwG_gxbyeg",
+        "title": "OLIVER&#39;S 2ND BIRTHDAY SPECIAL!",
+        "description": "HappyBirthdayOllie Follow Me On Twitter → http://www.twitter.com/bryanlanning ↓↓↓ Year Ago Vlogs Down Here! ↓↓↓ Sudden Kimpact ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/rrg-OAa1IAA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/rrg-OAa1IAA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/rrg-OAa1IAA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Daily Bumps",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"nxOHAKTVB7baOKsQgTtJIyGxcs8/BJl_yTcUZr1ia24isZiSFAQda_8\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "JB5FvBmcCYY"
+      },
+      "snippet": {
+        "publishedAt": "2008-09-25T15:55:23.000Z",
+        "channelId": "UCToHXfKnc_SOrmfDqQ6oocA",
+        "title": "Oliver Dragojevic - Nocturno",
+        "description": "jedna predivna pjesma za neke odredjene trenutke.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/JB5FvBmcCYY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/JB5FvBmcCYY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/JB5FvBmcCYY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Leone Strunjak",
+        "liveBroadcastContent": "none"
+      }
+    }
+  ]
+}

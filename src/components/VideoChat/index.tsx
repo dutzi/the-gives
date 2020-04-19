@@ -5,17 +5,24 @@ import { useRouteMatch } from 'react-router-dom';
 import { roomDocRef } from '../../firestore-refs';
 import { getCurrentUserUID } from '../../utils';
 import useRoomId from '../../hooks/use-room-id';
+import { useTranslation } from 'react-i18next';
 
 const configuration = {
   iceServers: [
+    // {
+    //   urls: ['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302'],
+    // },
     {
-      urls: ['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302'],
+      urls: 'turn:numb.viagenie.ca',
+      username: 'dutzi.b@gmail.com',
+      credential: 'Kaq@aWtm6F@s6VA',
     },
   ],
   iceCandidatePoolSize: 10,
 };
 
 export default ({ room }: { room?: IRoom }) => {
+  const { t } = useTranslation();
   const [peerConnection, setPeerConnection] = useState<RTCPeerConnection>();
   const [localStream, setLocalStream] = useState<MediaStream | null>(null);
   const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
@@ -23,6 +30,27 @@ export default ({ room }: { room?: IRoom }) => {
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
   const [hasInitialized, setHasInitialized] = useState(false);
   const roomId = useRoomId();
+
+  const openUserMedia = useCallback(async () => {
+    if (
+      !navigator.mediaDevices &&
+      window.location.host === 'the-gives-local:3050'
+    ) {
+      console.error('Cannot access camera on insecure domains');
+      console.info(
+        'Navigate to chrome://flags/#unsafely-treat-insecure-origin-as-secure ' +
+          'and add "http://the-gives-local:3050" to the list of trusted domains'
+      );
+    }
+
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true,
+    });
+
+    setLocalStream(stream);
+    setRemoteStream(new MediaStream());
+  }, []);
 
   const registerPeerConnectionListeners = useCallback(
     (peerConnection) => {
@@ -38,7 +66,10 @@ export default ({ room }: { room?: IRoom }) => {
         );
 
         if (peerConnection.connectionState === 'disconnected') {
-          roomDocRef(roomId).set({ answer: null } as IRoom, { merge: true });
+          openUserMedia();
+          setTimeout(() => {
+            setHasInitialized(false);
+          }, 100);
         }
       });
 
@@ -52,7 +83,7 @@ export default ({ room }: { room?: IRoom }) => {
         );
       });
     },
-    [roomId]
+    [openUserMedia]
   );
 
   const createRoom = useCallback(async () => {
@@ -101,12 +132,20 @@ export default ({ room }: { room?: IRoom }) => {
 
     await roomRef.set(room, { merge: true });
 
+    // peerConnection.addEventListener('track', (event) => {
+    //   console.log('Got remote track:', event.streams[0]);
+    //   event.streams[0].getTracks().forEach((track) => {
+    //     console.log('Add a track to the remoteStream:', track);
+    //     remoteStream.addTrack(track);
+    //   });
+    // });
+
     peerConnection.addEventListener('track', (event) => {
+      //other pc track
       console.log('Got remote track:', event.streams[0]);
-      event.streams[0].getTracks().forEach((track) => {
-        console.log('Add a track to the remoteStream:', track);
-        remoteStream.addTrack(track);
-      });
+
+      remoteVideoRef.current!.srcObject = event.streams[0];
+      setRemoteStream(event.streams[0]);
     });
 
     roomRef.onSnapshot(async (snapshot) => {
@@ -122,7 +161,7 @@ export default ({ room }: { room?: IRoom }) => {
       snapshot.docChanges().forEach(async (change) => {
         if (change.type === 'added') {
           let data = change.doc.data();
-          console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
+          console.log(`Got new remote ICE candidate`, data);
           await peerConnection.addIceCandidate(new RTCIceCandidate(data));
         }
       });
@@ -172,12 +211,20 @@ export default ({ room }: { room?: IRoom }) => {
     });
     // Code for collecting ICE candidates above
 
+    // peerConnection.addEventListener('track', (event) => {
+    //   console.log('Got remote track:', event.streams[0]);
+    //   event.streams[0].getTracks().forEach((track) => {
+    //     console.log('Add a track to the remoteStream:', track);
+    //     remoteStream.addTrack(track);
+    //   });
+    // });
+
     peerConnection.addEventListener('track', (event) => {
+      //other pc track
       console.log('Got remote track:', event.streams[0]);
-      event.streams[0].getTracks().forEach((track) => {
-        console.log('Add a track to the remoteStream:', track);
-        remoteStream.addTrack(track);
-      });
+
+      remoteVideoRef.current!.srcObject = event.streams[0];
+      setRemoteStream(event.streams[0]);
     });
 
     // Code for creating SDP answer below
@@ -208,7 +255,7 @@ export default ({ room }: { room?: IRoom }) => {
       snapshot.docChanges().forEach(async (change) => {
         if (change.type === 'added') {
           let data = change.doc.data();
-          console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
+          console.log(`Got new remote ICE candidate`, data);
           await peerConnection.addIceCandidate(new RTCIceCandidate(data));
         }
       });
@@ -242,33 +289,24 @@ export default ({ room }: { room?: IRoom }) => {
 
     setHasInitialized(true);
 
-    if (room.host !== getCurrentUserUID()) {
-      joinRoom();
-    } else {
-      createRoom();
-    }
-  }, [room, createRoom, joinRoom, hasInitialized, localStream, remoteStream]);
-
-  const openUserMedia = useCallback(async () => {
-    if (
-      !navigator.mediaDevices &&
-      window.location.host === 'the-gives-local:3050'
-    ) {
-      console.error('Cannot access camera on insecure domains');
-      console.info(
-        'Navigate to chrome://flags/#unsafely-treat-insecure-origin-as-secure ' +
-          'and add "http://the-gives-local:3050" to the list of trusted domains'
+    if (room.host === getCurrentUserUID()) {
+      roomDocRef(roomId).set(
+        { answer: null, remoteOwner: getCurrentUserUID() } as IRoom,
+        { merge: true }
       );
+      createRoom();
+    } else {
+      joinRoom();
     }
-
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    });
-
-    setLocalStream(stream);
-    setRemoteStream(new MediaStream());
-  }, []);
+  }, [
+    roomId,
+    room,
+    createRoom,
+    joinRoom,
+    hasInitialized,
+    localStream,
+    remoteStream,
+  ]);
 
   useEffect(() => {
     if (!remoteVideoRef.current || !localVideoRef.current) {
@@ -289,6 +327,9 @@ export default ({ room }: { room?: IRoom }) => {
         <video ref={localVideoRef} muted autoPlay playsInline></video>
       </div>
       <div className={styles.remoteVideoWrapper}>
+        <div className={styles.noGuests}>
+          {t('Waiting for someone to join...')}
+        </div>
         <video ref={remoteVideoRef} autoPlay playsInline></video>
       </div>
     </div>

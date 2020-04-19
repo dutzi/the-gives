@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Room from './pages/Room';
 import { version } from '../package.json';
 import FireAuth from './components/FireAuth';
+import { RouteTransitionProvider } from 'react-route-transition';
 
 function App() {
   useEffect(() => {
@@ -17,12 +18,14 @@ function App() {
     <Provider store={store}>
       <FireAuth>
         <Router>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/w/:roomId">
-            <Room />
-          </Route>
+          <RouteTransitionProvider>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/w/:roomId">
+              <Room />
+            </Route>
+          </RouteTransitionProvider>
         </Router>
       </FireAuth>
     </Provider>

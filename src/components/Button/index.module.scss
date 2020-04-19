@@ -1,11 +1,11 @@
 .wrapper {
   border: none;
-  background: #ffffff;
-  color: #000000;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 12px;
+  border-radius: 6px;
+  padding: 3px 6px;
   position: relative;
+  font-size: 0.9em;
 
   .spinner {
     position: absolute;

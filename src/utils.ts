@@ -7,3 +7,11 @@ export function getCurrentUserUID() {
 
   return firebase.auth().currentUser!.uid;
 }
+
+export function showAdminTools() {
+  return localStorage.getItem('showAdminTools') === 'true';
+}
+
+export function isMobile() {
+  return window.innerWidth <= 576;
+}

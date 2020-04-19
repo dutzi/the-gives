@@ -14,3 +14,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.margin-v-sm {
+  margin-right: 6px;
+}
+
+.margin-v-md {
+  margin-right: 9px;
+}
+
+.margin-v-lg {
+  margin-right: 12px;
+}
+
+.margin-h-sm {
+  margin-bottom: 6px;
+}
+
+.margin-h-md {
+  margin-bottom: 9px;
+}
+
+.margin-h-lg {
+  margin-bottom: 12px;
+}
+
+.margin-h-xlg {
+  margin-bottom: 24px;
+}

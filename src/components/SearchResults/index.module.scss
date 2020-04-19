@@ -1,0 +1,54 @@
+@import '../../partials.module';
+
+.wrapper {
+  .video {
+    display: flex;
+    margin-bottom: 2em;
+    color: inherit;
+    text-decoration: none;
+
+    @include mobile {
+      flex-direction: column;
+      margin: 2em;
+    }
+
+    .thumbnail {
+      box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.13);
+      border-radius: 15px;
+      width: 227px;
+      height: 156px;
+      object-fit: cover;
+      margin-inline-end: 1.75em;
+      flex: 0 0 auto;
+
+      @include mobile {
+        width: 100%;
+        margin: 0px auto 1em;
+      }
+    }
+
+    .metadata {
+      .title {
+        margin-bottom: 0.5em;
+        font-size: 1.75em;
+
+        @include mobile {
+          font-size: 1.3em;
+        }
+      }
+
+      .description {
+        color: #999999;
+      }
+    }
+  }
+
+  &.md {
+  }
+
+  .spinner {
+    text-align: center;
+    font-size: 1.3em;
+    padding: 1em;
+  }
+}
