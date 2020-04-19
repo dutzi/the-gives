@@ -18,18 +18,19 @@ let youtubeIframeAPIReady = false;
   youtubeIframeAPIReady = true;
 };
 
-const videoWidth = isMobile() ? window.innerWidth - 16 * 2 : 640;
-const videoHeight = (videoWidth * 9) / 16;
-
 const YouTubePlayer = (
   {
     videoId,
     onStateChange,
     onCurrentTimeChange,
+    width,
+    height,
   }: {
     videoId?: string;
     onStateChange: (playing: boolean) => void;
     onCurrentTimeChange: (currentTime: number) => void;
+    width: number;
+    height: number;
   },
   ref: any
 ) => {
@@ -112,9 +113,13 @@ const YouTubePlayer = (
       return;
     }
 
-    let player = new YT.Player('player', {
-      height: videoHeight,
-      width: videoWidth,
+    if (player) {
+      return;
+    }
+
+    let newPlayer = new YT.Player('player', {
+      height,
+      width,
       videoId: videoId,
       playerVars: {
         fs: 0,
@@ -126,10 +131,14 @@ const YouTubePlayer = (
       },
     });
 
-    setPlayer(player);
+    setPlayer(newPlayer);
 
-    registerListeners(player);
-  }, [isPlayerReady, videoId, registerListeners]);
+    registerListeners(newPlayer);
+  }, [isPlayerReady, videoId, registerListeners, width, height, player]);
+
+  useEffect(() => {
+    player?.setSize(width, height);
+  }, [width, height, player]);
 
   if (!isPlayerReady) {
     return null;

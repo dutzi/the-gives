@@ -8,6 +8,7 @@ import { useLocation, Link, useHistory } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../svgs/logo.svg';
 import SearchResults from '../../components/SearchResults';
 import { useTransition } from 'react-route-transition';
+import DarkModeButton from '../../components/DarkModeButton';
 
 type TMode = 'home' | 'search' | 'search-immediate';
 
@@ -127,6 +128,7 @@ export default () => {
           </div>
           <Hero data-hero className={styles.hero} />
         </div>
+        <DarkModeButton />
       </header>
       <main className={styles.main}>
         <SearchResults query={query} size="lg" />

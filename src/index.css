@@ -1,13 +1,51 @@
+:root {
+  --bg-color: #ffffff;
+  --bg-color-muted: #e7e7e7;
+  --header-bg-color1: #a5ccf3;
+  --header-bg-color2: #bae1fc;
+  --input-bg-color: #ffffff;
+  --input-border-color: #transparent;
+  --input-color: #000000;
+  --text-color-default: #000000;
+  --text-color-muted: #999999;
+  --remote-bg-color: #212121;
+  --video-border-color: transparent;
+  --border-color-muted: #dddddd;
+  --primary-color: #ffeb02;
+}
+
 body {
   margin: 0;
   font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #000000;
+  transition: all 0.5s ease-out;
+}
+
+body.dark {
+  --bg-color: #212121;
+  --bg-color-muted: #383838;
+  --header-bg-color1: #3f51b5;
+  --header-bg-color2: #223c4e;
+  --input-bg-color: #383838;
+  --input-border-color: #4c4c4c;
+  --input-color: #ffffff;
+  --text-color-default: #ffffff;
+  --text-color-muted: #999999;
+  --remote-bg-color: #101010;
+  --video-border-color: #353535;
+  --border-color-muted: #4c4c4c;
+  --primary-color: #ffeb02;
+
+  background-color: #212121;
+  color: #ffffff;
 }
 
 code {

@@ -29,6 +29,7 @@
 
     .metadata {
       .title {
+        color: var(--text-color-default);
         margin-bottom: 0.5em;
         font-size: 1.75em;
 
@@ -38,7 +39,7 @@
       }
 
       .description {
-        color: #999999;
+        color: var(--text-color-muted);
       }
     }
   }

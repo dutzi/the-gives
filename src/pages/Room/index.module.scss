@@ -16,7 +16,10 @@
   }
 
   .header {
-    background: linear-gradient(#a5ccf3, #bae1fc);
+    background: linear-gradient(
+      var(--header-bg-color1),
+      var(--header-bg-color2)
+    );
     height: 68px;
     padding: 0.6em 2em;
     box-sizing: border-box;
@@ -53,12 +56,13 @@
         .searchBox {
           input {
             outline: none;
-            background: #ffffff;
+            background: var(--input-bg-color);
+            border: 1px solid var(--input-border-color);
+            color: var(--input-color);
             border-radius: 15px;
             width: 100%;
             box-sizing: border-box;
             max-width: 600px;
-            border: none;
             box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.13);
             font-size: 1.3em;
             padding: 12px;
@@ -98,7 +102,8 @@
         overflow: hidden;
         display: inline-block;
         line-height: 0;
-        flex: 0 0 var(--video-width);
+        // flex: 0 0 var(--video-width);
+        flex: 0 0 auto;
         margin-inline-end: 2em;
         align-self: center;
         // fix mobile iOS issue where border-radius not applied
@@ -118,7 +123,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background: #212121;
+          background: var(--remote-bg-color);
           line-height: 1.5;
           color: white;
           padding: 0.5em 0.8em;
@@ -145,7 +150,14 @@
         font-size: 1.1em;
         font-family: inherit;
         border-radius: 6px;
-        border: 1px solid #ddd;
+        background-color: var(--input-bg-color);
+        border: 1px solid var(--input-border-color);
+        color: var(--input-color);
+        outline: none;
+
+        &:focus {
+          box-shadow: 0px 0px 0px 2px #03a9f4;
+        }
 
         @include mobile {
           width: 100%;

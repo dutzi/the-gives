@@ -10,6 +10,15 @@ import 'firebase/storage';
 import 'firebase/auth';
 import 'firebase/analytics';
 
+if (localStorage.getItem('darkMode') === 'true') {
+  const transition = document.body.style.transition;
+  document.body.style.transition = '';
+  document.body.classList.add('dark');
+  setTimeout(() => {
+    document.body.style.transition = transition;
+  }, 1000);
+}
+
 const firebaseConfig = {
   apiKey: 'AIzaSyD_zeFl3CFzGL9pv2IBF3qvIYluwm_EWuI',
   authDomain: 'the-gives.firebaseapp.com',

@@ -25,7 +25,7 @@ export default ({ query, size }: { query: string; size: 'md' | 'lg' }) => {
 
       setVideos((videos) => [
         ...videos,
-        ...response.items
+        ...(response.items ?? [])
           .filter((result) => result.id?.kind === 'youtube#video')
           .map((result) => ({
             id: result.id?.videoId,

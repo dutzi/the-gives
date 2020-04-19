@@ -15,6 +15,10 @@ import useProcessing from '../../hooks/use-processing';
 import { useTransitionHistory, useTransition } from 'react-route-transition';
 import usePlayerSync from './use-player-sync';
 import gsap, { Back } from 'gsap';
+import DarkModeButton from '../../components/DarkModeButton';
+
+const initialVideoWidth = isMobile() ? window.innerWidth - 16 * 2 : 640;
+const initialVideoHeight = (initialVideoWidth * 9) / 16;
 
 export default () => {
   const { t } = useTranslation();
@@ -23,6 +27,10 @@ export default () => {
   const processingRemoteOwner = useProcessing();
   const playerRef = useRef<any>(null);
   const history = useTransitionHistory();
+  const [playerSize, setPlayerSize] = useState({
+    width: initialVideoWidth,
+    height: initialVideoHeight,
+  });
 
   useTransition({
     handlers: [
@@ -118,6 +126,22 @@ export default () => {
     }
   }
 
+  useEffect(() => {
+    function handleResize() {
+      const maxWidth = 640;
+      const width = isMobile()
+        ? window.innerWidth - 32
+        : Math.min(maxWidth, window.innerWidth * 0.666);
+      setPlayerSize({ width, height: (width * 9) / 16 });
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   function handleToggleFullscreen() {}
 
   let remoteOwnerLabel = hasRemote
@@ -148,16 +172,25 @@ export default () => {
             </div>
           </div>
         </div>
+        <DarkModeButton />
       </header>
       <main className={styles.container}>
         <div className={styles.videoAndVideoChat}>
           <div className={styles.leftPane}>
-            <div className={styles.playerWrapper}>
+            <div
+              className={styles.playerWrapper}
+              style={{
+                width: playerSize.width + 'px',
+                height: playerSize.height + 'px',
+              }}
+            >
               <YouTubePlayer
                 ref={playerRef}
                 onStateChange={playerSync.handleStateChange}
                 onCurrentTimeChange={playerSync.handleCurrentTimeChange}
                 videoId={room?.video.id}
+                width={playerSize.width}
+                height={playerSize.height}
               />
             </div>
             <div className={styles.remoteStateIndicaator}>
