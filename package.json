@@ -1,6 +1,6 @@
 {
   "name": "the-gives",
-  "version": "0.0.61",
+  "version": "0.0.62",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",
@@ -67,6 +67,7 @@
     "@types/classnames": "^2.2.10",
     "@types/gapi": "^0.0.39",
     "@types/gapi.client.youtube": "v3",
+    "@types/google.analytics": "^0.0.40",
     "@types/lodash.debounce": "^4.0.6",
     "@types/react-router-dom": "^5.1.4",
     "@types/youtube": "^0.0.38",
