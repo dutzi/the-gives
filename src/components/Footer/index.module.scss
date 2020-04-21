@@ -1,0 +1,33 @@
+.wrapper {
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  margin: 0.5em 0px;
+  color: var(--text-color-muted);
+  flex-wrap: wrap;
+
+  .middleDot {
+    margin: 0px 0.5em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+  }
+
+  .languageSelector {
+    position: relative;
+    .languages {
+      position: absolute;
+      bottom: 1.5em;
+      .languageButton {
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+      }
+    }
+  }
+}

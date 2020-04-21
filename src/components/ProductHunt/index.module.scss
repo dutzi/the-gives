@@ -1,0 +1,10 @@
+.wrapper {
+  position: absolute;
+  right: 0px;
+  top: 0.2em;
+}
+
+:global([dir='rtl']) .wrapper {
+  right: auto;
+  left: 0px;
+}

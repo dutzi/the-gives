@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import styles from './index.module.scss';
-import { IRoom, IRoomParams } from '../../types';
-import { useRouteMatch } from 'react-router-dom';
+import { IRoom } from '../../types';
 import { roomDocRef } from '../../firestore-refs';
 import { getCurrentUserUID } from '../../utils';
 import useRoomId from '../../hooks/use-room-id';
 import { useTranslation } from 'react-i18next';
+import useIsMobile from '../../hooks/use-is-mobile';
 
 const configuration = {
   iceServers: [
@@ -23,13 +23,15 @@ const configuration = {
 
 export default ({ room }: { room?: IRoom }) => {
   const { t } = useTranslation();
-  const [peerConnection, setPeerConnection] = useState<RTCPeerConnection>();
+  const [, setPeerConnection] = useState<RTCPeerConnection>();
   const [localStream, setLocalStream] = useState<MediaStream | null>(null);
   const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
   const [hasInitialized, setHasInitialized] = useState(false);
   const roomId = useRoomId();
+  const [showWebcamRequest, setShowWebcamRequest] = useState(false);
+  const isMobile = useIsMobile();
 
   const openUserMedia = useCallback(async () => {
     if (
@@ -43,10 +45,15 @@ export default ({ room }: { room?: IRoom }) => {
       );
     }
 
+    const timeout = setTimeout(() => {
+      setShowWebcamRequest(true);
+    }, 500);
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true,
     });
+    clearTimeout(timeout);
+    setShowWebcamRequest(false);
 
     setLocalStream(stream);
     setRemoteStream(new MediaStream());
@@ -321,6 +328,12 @@ export default ({ room }: { room?: IRoom }) => {
     openUserMedia();
   }, [openUserMedia]);
 
+  useEffect(() => {
+    return () => {
+      localStream?.getTracks().forEach((track) => track.stop());
+    };
+  }, [localStream]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.localVideoWrapper}>
@@ -332,6 +345,13 @@ export default ({ room }: { room?: IRoom }) => {
         </div>
         <video ref={remoteVideoRef} autoPlay playsInline></video>
       </div>
+      {showWebcamRequest && !isMobile && (
+        <div className={styles.webcamRequestOverlay}>
+          <div className={styles.message}>
+            {t('Please allow webcam access')}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

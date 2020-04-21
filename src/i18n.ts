@@ -21,6 +21,10 @@ export function setLanguage(lng: TSupportedLanguages) {
   ]);
 }
 
+export function getInitLanguage() {
+  return (localStorage.getItem('language') ?? 'en') as TSupportedLanguages;
+}
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -36,3 +40,7 @@ i18n
       escapeValue: false,
     },
   });
+
+export default function initI18n() {
+  setLanguage(getInitLanguage());
+}

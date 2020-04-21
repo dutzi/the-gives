@@ -1,14 +1,25 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
+import cx from 'classnames';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import YouTubePlayer from '../../components/YouTubePlayer';
 import { ReactComponent as GamepadIcon } from '../../svgs/gamepad.svg';
-import { IRoom } from '../../types';
+import { ReactComponent as FireIcon } from '../../svgs/fire.svg';
+import { ReactComponent as ClipboardIcon } from '../../svgs/clipboard.svg';
+import { ReactComponent as ExpandIcon } from '../../svgs/expand.svg';
+import { ReactComponent as CompressIcon } from '../../svgs/compress.svg';
+import { IRoom, IVideo } from '../../types';
 import { roomDocRef } from '../../firestore-refs';
 import VideoChat from '../../components/VideoChat';
 import { ReactComponent as Logo } from '../../svgs/logo.svg';
-import { getCurrentUserUID, showAdminTools, isMobile } from '../../utils';
+import {
+  getCurrentUserUID,
+  showAdminTools,
+  isMobile,
+  isYouTubeLink,
+  getYouTubeVideoId,
+} from '../../utils';
 import Button from '../../components/Button';
 import useRoomId from '../../hooks/use-room-id';
 import useProcessing from '../../hooks/use-processing';
@@ -16,9 +27,20 @@ import { useTransitionHistory, useTransition } from 'react-route-transition';
 import usePlayerSync from './use-player-sync';
 import gsap, { Back } from 'gsap';
 import DarkModeButton from '../../components/DarkModeButton';
+import useLocalStorage from '../../hooks/use-local-storage';
+import createRoom from '../../clients/create-room';
+import useIsMobile from '../../hooks/use-is-mobile';
 
-const initialVideoWidth = isMobile() ? window.innerWidth - 16 * 2 : 640;
-const initialVideoHeight = (initialVideoWidth * 9) / 16;
+const minChatWidth = 400;
+const maxVideoWidthNoFullscreen = 640;
+
+function calcVideoWidth(fullscreen: boolean) {
+  return isMobile()
+    ? window.innerWidth - 16 * 2
+    : fullscreen
+    ? Math.max(window.innerWidth * 0.666, window.innerWidth - minChatWidth)
+    : maxVideoWidthNoFullscreen;
+}
 
 export default () => {
   const { t } = useTranslation();
@@ -27,10 +49,24 @@ export default () => {
   const processingRemoteOwner = useProcessing();
   const playerRef = useRef<any>(null);
   const history = useTransitionHistory();
+  const [fullscreen, setFullscreen] = useLocalStorage('fullscreen', '0');
+  const isMobile = useIsMobile();
+
+  const initialVideoWidth = calcVideoWidth(fullscreen === '1');
+  const initialVideoHeight = (initialVideoWidth * 9) / 16;
+
   const [playerSize, setPlayerSize] = useState({
     width: initialVideoWidth,
     height: initialVideoHeight,
   });
+
+  const [showCopied, setShowCopied] = useState(false);
+
+  const roomLinkRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    roomLinkRef.current?.focus();
+  }, []);
 
   useTransition({
     handlers: [
@@ -120,40 +156,66 @@ export default () => {
 
   const hasRemote = room?.remoteOwner === getCurrentUserUID();
 
-  function handleSearchKeyDown(e: React.KeyboardEvent) {
+  async function handleSearchKeyDown(e: React.KeyboardEvent) {
     if (e.keyCode === 13) {
-      history.push('/?q=' + (e.target as HTMLInputElement).value);
+      const value = (e.target as HTMLInputElement).value;
+      if (isYouTubeLink(value)) {
+        const videoId = getYouTubeVideoId(value);
+
+        if (!videoId) {
+          return;
+        }
+
+        const room = await createRoom({ id: videoId } as IVideo);
+        history.push(`/w/${room.id}`);
+      } else {
+        history.push('/?q=' + (e.target as HTMLInputElement).value);
+      }
     }
   }
 
   useEffect(() => {
     function handleResize() {
-      const maxWidth = 640;
-      const width = isMobile()
-        ? window.innerWidth - 32
-        : Math.min(maxWidth, window.innerWidth * 0.666);
+      const width = calcVideoWidth(fullscreen === '1');
       setPlayerSize({ width, height: (width * 9) / 16 });
     }
 
     window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    handleResize();
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
     };
-  }, []);
+  }, [fullscreen]);
 
-  function handleToggleFullscreen() {}
+  function handleToggleFullscreen() {
+    setFullscreen(fullscreen === '1' ? '0' : '1');
+  }
 
   let remoteOwnerLabel = hasRemote
-    ? isMobile()
+    ? isMobile
       ? t('Remote is yours')
       : t("You've got the remote")
-    : isMobile()
+    : isMobile
     ? t('Remote is theirs')
     : t("They've got the remote");
 
+  function handleCopyRoomLink() {
+    roomLinkRef.current?.select();
+    document.execCommand('copy');
+    setShowCopied(true);
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 1000);
+  }
+
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={cx(styles.wrapper, fullscreen === '1' && styles.fullscreen)}
+    >
       <header data-header className={styles.header}>
         <div data-content className={styles.content}>
           <div data-logo className={styles.logo}>
@@ -166,13 +228,17 @@ export default () => {
               <input
                 data-search-input
                 type="text"
-                placeholder={t('Search for videos...')}
+                placeholder={
+                  isMobile
+                    ? t('Search')
+                    : t('Paste YouTube URL, or search for videos...')
+                }
                 onKeyDown={handleSearchKeyDown}
               />
             </div>
           </div>
         </div>
-        <DarkModeButton />
+        {/* <DarkModeButton /> */}
       </header>
       <main className={styles.container}>
         <div className={styles.videoAndVideoChat}>
@@ -205,7 +271,7 @@ export default () => {
                   showSpinner={processingRemoteOwner.state}
                   color="secondary"
                 >
-                  {isMobile() ? t('Get It') : t('Get Remote')}
+                  {isMobile ? t('Get It') : t('Get Remote')}
                 </Button>
               )}
             </div>
@@ -216,22 +282,36 @@ export default () => {
         </div>
         <div className="margin-h-lg" />
         <div className={styles.shareBox}>
-          <input
-            className={styles.shareLink}
-            value={window.location.href}
-            onFocus={handleShareFocus}
-          />
+          <div className={styles.copyableInput}>
+            <input
+              ref={roomLinkRef}
+              className={styles.shareLink}
+              value={showCopied ? t('Copied!')! : window.location.href}
+              onFocus={handleShareFocus}
+            />
+            <button className={styles.copyButton} onClick={handleCopyRoomLink}>
+              <ClipboardIcon />
+            </button>
+          </div>
           <div className="margin-h-md" />
           <div>
             {t('(share this link with a friend so they can join your room)')}
           </div>
         </div>
         <div className="margin-h-lg" />
-        <div className={styles.actions}>
-          <Button color="primary" onClick={handleToggleFullscreen}>
-            {t('Enter Fullscreen')}
-          </Button>
-        </div>
+        {!isMobile && (
+          <div className={styles.actions}>
+            <button
+              className={styles.iconButton}
+              onClick={handleToggleFullscreen}
+            >
+              {fullscreen === '0' ? <ExpandIcon /> : <CompressIcon />}
+              {fullscreen === '0'
+                ? t('Enter Fullscreen')
+                : t('Exit Fullscreen')}
+            </button>
+          </div>
+        )}
         {showAdminTools() && (
           <div className={styles.adminTools}>
             <a
@@ -242,8 +322,10 @@ export default () => {
               }
               rel="noopener noreferrer"
               target="_blank"
+              className={styles.iconButton}
             >
-              Firestore
+              <FireIcon />
+              {t('Firestore')}
             </a>
           </div>
         )}

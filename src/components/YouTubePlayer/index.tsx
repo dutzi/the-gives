@@ -5,7 +5,6 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
-import { isMobile } from '../../utils';
 
 let youtubeIframeAPIReady = false;
 
@@ -14,7 +13,6 @@ let youtubeIframeAPIReady = false;
 };
 
 (window as any).onYouTubeIframeAPIReady = (e: any) => {
-  console.log('sss');
   youtubeIframeAPIReady = true;
 };
 
@@ -120,7 +118,7 @@ const YouTubePlayer = (
     let newPlayer = new YT.Player('player', {
       height,
       width,
-      videoId: videoId,
+      videoId,
       playerVars: {
         fs: 0,
         playsinline: 1,

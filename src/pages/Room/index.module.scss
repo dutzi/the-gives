@@ -57,7 +57,7 @@
           input {
             outline: none;
             background: var(--input-bg-color);
-            border: 1px solid var(--input-border-color);
+            border: 1px solid var(--search-border-color);
             color: var(--input-color);
             border-radius: 15px;
             width: 100%;
@@ -143,24 +143,51 @@
     }
 
     .shareBox {
-      .shareLink {
-        width: 640px;
-        box-sizing: border-box;
-        padding: 7px 8px;
-        font-size: 1.1em;
-        font-family: inherit;
-        border-radius: 6px;
-        background-color: var(--input-bg-color);
-        border: 1px solid var(--input-border-color);
-        color: var(--input-color);
-        outline: none;
+      position: relative;
+      width: 640px;
+      max-width: 100%;
 
-        &:focus {
-          box-shadow: 0px 0px 0px 2px #03a9f4;
+      .copyableInput {
+        border-radius: 6px;
+        border: 1px solid var(--border-color-muted);
+        display: flex;
+
+        .shareLink {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 7px 8px;
+          font-size: 1.1em;
+          font-family: inherit;
+          background-color: var(--input-bg-color);
+          color: var(--input-color);
+          outline: none;
+          border: none;
+          border-radius: 6px 0px 0px 6px;
+
+          &:focus {
+            box-shadow: 0px 0px 0px 2px #03a9f4;
+          }
+
+          @include mobile {
+            width: 100%;
+            margin-inline-start: 2px;
+          }
         }
 
-        @include mobile {
-          width: 100%;
+        .copyButton {
+          border: none;
+          padding: 6px 10px;
+          color: var(--text-color-default);
+          background: var(--bg-color-x-muted);
+          border-radius: 0px 6px 6px 0px;
+          outline: none;
+          &:focus {
+            box-shadow: 0px 0px 0px 2px #03a9f4;
+          }
+
+          svg {
+            width: 16px;
+          }
         }
       }
     }
@@ -175,5 +202,54 @@
   .innerFlex {
     display: flex;
     align-items: inherit;
+  }
+
+  &.fullscreen {
+    .container {
+      max-width: calc(100vw - 2em);
+    }
+  }
+
+  .adminTools {
+    margin-top: 1em;
+  }
+
+  .iconButton {
+    display: inline-flex;
+    color: var(--text-color-default);
+    text-decoration: none;
+    align-items: center;
+    background: none;
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+    padding: 5px 6px;
+    border-radius: 6px;
+
+    &:focus {
+      box-shadow: 0px 0px 0px 2px #03a9f4;
+    }
+
+    svg {
+      width: 20px;
+      margin-inline-end: 0.5em;
+    }
+  }
+}
+
+:global([dir='rtl']) .wrapper .header .content {
+  .search {
+    left: 0px;
+    right: 190px;
+  }
+}
+
+:global([dir='rtl']) .wrapper .container .shareBox .copyableInput {
+  .shareLink {
+    border-radius: 0px 6px 6px 0px;
+  }
+  .copyButton {
+    border-radius: 6px 0px 0px 6px;
   }
 }

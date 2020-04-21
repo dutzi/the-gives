@@ -5,8 +5,8 @@ import { ReactComponent as UmbrellaIcon } from '../../svgs/umbrella.svg';
 export default () => {
   function handleClick() {
     localStorage.setItem(
-      'darkMode',
-      localStorage.getItem('darkMode') === 'true' ? 'false' : 'true'
+      'colorSchema',
+      localStorage.getItem('colorSchema') === 'light' ? 'dark' : 'light'
     );
     document.body.classList.toggle('dark');
   }

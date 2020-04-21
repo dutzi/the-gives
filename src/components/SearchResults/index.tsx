@@ -2,42 +2,59 @@ import React, { useState, useEffect, useCallback } from 'react';
 import cx from 'classnames';
 import styles from './index.module.scss';
 import { IVideo } from '../../types';
-import { roomColRef } from '../../firestore-refs';
-import { getCurrentUserUID } from '../../utils';
 import { useTransitionHistory } from 'react-route-transition';
 import debounce from 'lodash.debounce';
 import { useInView } from 'react-intersection-observer';
 import * as youtube from '../../clients/youtube';
+import { useTranslation } from 'react-i18next';
+import firebase from 'firebase/app';
+import createRoom from '../../clients/create-room';
+import { useDispatch } from 'react-redux';
+import uiSlice from '../../state/reducers/ui-slice';
+import { useTypedSelector } from '../../state/store';
 
 export default ({ query, size }: { query: string; size: 'md' | 'lg' }) => {
   const [videos, setVideos] = useState<IVideo[]>([]);
   const history = useTransitionHistory();
   const [loadingMoreRef, inView] = useInView();
+  const { t } = useTranslation();
+  const [email, setEmail] = useState('');
   const [nextPageToken, setNextPageToken] = useState<string>();
+  const isYoutubeDown = useTypedSelector((state) => state.ui.isYoutubeDown);
+
+  const dispatch = useDispatch();
 
   const search = useCallback(
     debounce(async (query: string, nextPageToken?: string) => {
-      const response = await youtube.search({ query, nextPageToken });
+      try {
+        const response = await youtube.search({
+          query,
+          nextPageToken,
+          useFallback: isYoutubeDown,
+        });
 
-      if (!response || !response.items) {
-        return;
+        if (!response || !response.items) {
+          return;
+        }
+
+        setVideos((videos) => [
+          ...videos,
+          ...(response.items ?? [])
+            .filter((result) => result.id?.kind === 'youtube#video')
+            .map((result) => ({
+              id: result.id?.videoId,
+              title: result.snippet?.title,
+              description: result.snippet?.description,
+              thumbnail: result.snippet?.thumbnails?.medium?.url,
+            })),
+        ]);
+
+        setNextPageToken(response.nextPageToken);
+      } catch (err) {
+        dispatch(uiSlice.actions.setIsYoutubeDown(true));
       }
-
-      setVideos((videos) => [
-        ...videos,
-        ...(response.items ?? [])
-          .filter((result) => result.id?.kind === 'youtube#video')
-          .map((result) => ({
-            id: result.id?.videoId,
-            title: result.snippet?.title,
-            description: result.snippet?.description,
-            thumbnail: result.snippet?.thumbnails?.medium?.url,
-          })),
-      ]);
-
-      setNextPageToken(response.nextPageToken);
     }, 250),
-    []
+    [isYoutubeDown]
   );
 
   useEffect(() => {
@@ -53,12 +70,7 @@ export default ({ query, size }: { query: string; size: 'md' | 'lg' }) => {
 
   async function handleVideoClick(video: IVideo, e: React.MouseEvent) {
     e.preventDefault();
-    const room = await roomColRef().add({
-      video,
-      platform: 'youtube',
-      remoteOwner: getCurrentUserUID(),
-      host: getCurrentUserUID(),
-    });
+    const room = await createRoom(video);
     history.push(`/w/${room.id}`);
   }
 
@@ -68,10 +80,47 @@ export default ({ query, size }: { query: string; size: 'md' | 'lg' }) => {
     }
 
     search(query);
-  }, [query, search]);
+  }, [query, search, isYoutubeDown]);
+
+  function handleSubmitEmail(e: React.FormEvent) {
+    e.preventDefault();
+    firebase.firestore().collection('emails').add({ email });
+    alert('Thanks! I will email you once this is fixed!');
+  }
 
   return (
     <div className={cx(styles.wrapper, styles[size])}>
+      {isYoutubeDown && !videos.length && (
+        <div className={styles.disclaimer}>
+          <div className={styles.contact}>
+            {t(
+              'This got big really quick. I maxed out the number of API calls I can make ' +
+                'to YouTube. Search will show other results for now. Leave your Email below ' +
+                "and I'll email you once this has sorted out."
+            )}
+          </div>
+          <div>
+            <form className={styles.emailForm} onSubmit={handleSubmitEmail}>
+              <input
+                type="text"
+                value={email}
+                placeholder="john@example.com"
+                className={styles.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className="margin-h-md" />
+              <input className={styles.submit} type="submit"></input>
+            </form>
+          </div>
+        </div>
+      )}
+      {isYoutubeDown && !!videos.length && (
+        <div className={styles.quota}>
+          {t(
+            "I've exceeded YouTube's quota. Here are some John Oliver clips instead of what you searched for. Sorry."
+          )}
+        </div>
+      )}
       {videos.map((video) => (
         <a
           key={video.id}

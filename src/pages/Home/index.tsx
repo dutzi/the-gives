@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import styles from './index.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -7,8 +7,15 @@ import gsap, { Back } from 'gsap';
 import { useLocation, Link, useHistory } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../svgs/logo.svg';
 import SearchResults from '../../components/SearchResults';
-import { useTransition } from 'react-route-transition';
+import { useTransition, useTransitionHistory } from 'react-route-transition';
 import DarkModeButton from '../../components/DarkModeButton';
+import Footer from '../../components/Footer';
+import CookiePolicyMessage from '../../components/CookiePolicyMessage';
+import { isYouTubeLink, getYouTubeVideoId } from '../../utils';
+import createRoom from '../../clients/create-room';
+import { IVideo } from '../../types';
+import ProductHunt from '../../components/ProductHunt';
+import useIsMobile from '../../hooks/use-is-mobile';
 
 type TMode = 'home' | 'search' | 'search-immediate';
 
@@ -19,7 +26,9 @@ export default () => {
   const [mode, setMode] = useState<TMode>('home');
   const location = useLocation();
   const reactRouterHistory = useHistory();
+  const history = useTransitionHistory();
   const [hasQuery] = useState(new URLSearchParams(location.search).has('q'));
+  const isMobile = useIsMobile();
 
   useTransition({
     handlers: [
@@ -96,7 +105,22 @@ export default () => {
   }, [mode]);
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
+    const value = e.target.value;
+
+    setQuery(value);
+  }
+
+  async function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.keyCode === 13 && isYouTubeLink(query)) {
+      const videoId = getYouTubeVideoId(query);
+
+      if (!videoId) {
+        return;
+      }
+
+      const room = await createRoom({ id: videoId } as IVideo);
+      history.push(`/w/${room.id}`);
+    }
   }
 
   return (
@@ -111,8 +135,9 @@ export default () => {
               <Logo />
             </Link>
           </div>
+          {/* {!isMobile && !query && <ProductHunt />} */}
           <div data-tagline className={styles.tagline}>
-            {t('Watch videos with friends.')}
+            {t('Watch videos while video chatting with friends.')}
           </div>
           <div className={styles.search}>
             <div className={styles.searchBox}>
@@ -121,18 +146,25 @@ export default () => {
                 value={query}
                 ref={inputRef}
                 type="text"
-                placeholder={t('Search for videos...')}
+                placeholder={
+                  isMobile
+                    ? t('Paste YouTube URL, or search')
+                    : t('Paste YouTube URL, or search for videos...')
+                }
                 onChange={handleSearchChange}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>
           <Hero data-hero className={styles.hero} />
         </div>
-        <DarkModeButton />
+        {/* {!isMobile && !!query && <DarkModeButton />} */}
       </header>
       <main className={styles.main}>
-        <SearchResults query={query} size="lg" />
+        {!isYouTubeLink(query) && <SearchResults query={query} size="lg" />}
       </main>
+      <CookiePolicyMessage />
+      <Footer />
     </div>
   );
 };

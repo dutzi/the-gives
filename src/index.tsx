@@ -10,7 +10,7 @@ import 'firebase/storage';
 import 'firebase/auth';
 import 'firebase/analytics';
 
-if (localStorage.getItem('darkMode') === 'true') {
+if (localStorage.getItem('colorSchema') !== 'light') {
   const transition = document.body.style.transition;
   document.body.style.transition = '';
   document.body.classList.add('dark');

@@ -17,6 +17,7 @@ export interface IRoom {
   answer?: any; // Todo: type
   remoteOwner: string;
   host: string;
+  date: string;
 }
 
 export interface IPlaybackState {

@@ -1,10 +1,11 @@
 :root {
   --bg-color: #ffffff;
   --bg-color-muted: #e7e7e7;
+  --bg-color-x-muted: #dddddd;
   --header-bg-color1: #a5ccf3;
   --header-bg-color2: #bae1fc;
   --input-bg-color: #ffffff;
-  --input-border-color: #transparent;
+  --search-border-color: #transparent;
   --input-color: #000000;
   --text-color-default: #000000;
   --text-color-muted: #999999;
@@ -32,10 +33,11 @@ body {
 body.dark {
   --bg-color: #212121;
   --bg-color-muted: #383838;
+  --bg-color-x-muted: #676767;
   --header-bg-color1: #3f51b5;
   --header-bg-color2: #223c4e;
   --input-bg-color: #383838;
-  --input-border-color: #4c4c4c;
+  --search-border-color: #4c4c4c;
   --input-color: #ffffff;
   --text-color-default: #ffffff;
   --text-color-muted: #999999;
@@ -79,4 +81,8 @@ code {
 
 .margin-h-xlg {
   margin-bottom: 24px;
+}
+
+input {
+  -webkit-appearance: none;
 }

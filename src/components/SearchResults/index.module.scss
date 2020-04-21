@@ -1,6 +1,52 @@
 @import '../../partials.module';
 
 .wrapper {
+  .quota {
+    font-size: 2.4em;
+    color: #f44336;
+    padding: 0em 0px 1em;
+  }
+
+  .disclaimer {
+    @include mobile {
+      margin: 0px 1em;
+    }
+
+    .contact {
+      font-size: 1.2em;
+      color: #f44336;
+      padding: 0em 0px 1em;
+      max-width: 400px;
+    }
+
+    .emailForm {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .email {
+        font-size: 1.5em;
+        border: 1px solid white;
+        background: white;
+        padding: 0.2em;
+        border-radius: 6px;
+        padding: 0.3em 0.4em;
+
+        @include mobile {
+          box-sizing: border-box;
+          width: 100%;
+        }
+      }
+
+      .submit {
+        font-size: 1.5em;
+        background: #fff;
+        border-radius: 8px;
+        padding: 0.3em 0.5em;
+      }
+    }
+  }
+
   .video {
     display: flex;
     margin-bottom: 2em;

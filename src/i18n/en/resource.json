@@ -1,3 +1,26 @@
 {
-  "Welcome": "Welcome!"
+  "You've got the remote": "You've got the remote",
+  "They've got the remote": "They've got the remote",
+  "dismiss": "dismiss",
+  "Waiting for someone to join...": "Waiting for someone to join...",
+  "Please allow webcam access": "Please allow webcam access",
+  "Watch videos while video chatting with friends.": "Watch videos while video chatting with friends.",
+  "Paste YouTube URL, or search": "Paste YouTube URL, or search",
+  "Remote is yours": "Remote is yours",
+  "Remote is theirs": "Remote is theirs",
+  "Search": "Search",
+  "Paste YouTube URL, or search for videos...": "Paste YouTube URL, or search for videos...",
+  "Get It": "Get It",
+  "Get Remote": "Get Remote",
+  "Copied!": "Copied!",
+  "(share this link with a friend so they can join your room)": "(share this link with a friend so they can join your room)",
+  "Enter Fullscreen": "Enter Fullscreen",
+  "Exit Fullscreen": "Exit Fullscreen",
+  "Firestore": "Firestore",
+  "Contact": "Contact",
+  "Cookie Policy": "Cookie Policy",
+  "Language": "Language",
+  "Toggle Dark Mode": "Toggle Dark Mode",
+  "About": "About",
+  "Version": "Version"
 }

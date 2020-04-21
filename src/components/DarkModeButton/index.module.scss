@@ -23,3 +23,8 @@
     height: 100%;
   }
 }
+
+:global([dir='rtl']) .wrapper {
+  right: auto;
+  left: 30px;
+}

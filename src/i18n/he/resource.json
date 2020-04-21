@@ -1,3 +1,26 @@
 {
-  "Welcome": "ברוכים הבאים!"
+  "You've got the remote": "השלט אצלכם",
+  "They've got the remote": "השלט אצלם",
+  "dismiss": "אשר",
+  "Waiting for someone to join...": "ממתין שאחרים יתחברו...",
+  "Please allow webcam access": "נא לאשר גישה למצלמה",
+  "Watch videos while video chatting with friends.": "צפו בסרטונים בזמן שאתם משוחחים בווידאו עם חברים.",
+  "Paste YouTube URL, or search": "הדביקו לינק ליוטיוב, או חפשו סרטונים",
+  "Remote is yours": "השלט אצלכם",
+  "Remote is theirs": "השלט אצלם",
+  "Search": "חיפוש",
+  "Paste YouTube URL, or search for videos...": "הדביקו לינק ליוטיוב, או חפשו סרטונים...",
+  "Get It": "קח את השלט",
+  "Get Remote": "קח את השלט",
+  "Copied!": "הועתק!",
+  "(share this link with a friend so they can join your room)": "(שתפו לינק זה עם חברים על מנת שיוכלו להצטרף לחדר)",
+  "Enter Fullscreen": "צפייה במסך מלא",
+  "Exit Fullscreen": "יציאה ממסך מלא",
+  "Firestore": "פיירסטור",
+  "Contact": "צרו קשר",
+  "Cookie Policy": "מדיניות עוגיות",
+  "Language": "שפה",
+  "Toggle Dark Mode": "שינוי מצב תאורה",
+  "About": "אודות",
+  "Version": "גרסא"
 }

@@ -6,8 +6,12 @@ import {
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import counterSlice from '../components/Counter/reducers';
 import logger from 'redux-logger';
+import uiSlice from './reducers/ui-slice';
 
-const rootReducer = combineReducers({ counter: counterSlice.reducer });
+const rootReducer = combineReducers({
+  counter: counterSlice.reducer,
+  ui: uiSlice.reducer,
+});
 
 export type RootState = ReturnType<typeof rootReducer>;
 
