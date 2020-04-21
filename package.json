@@ -1,6 +1,6 @@
 {
   "name": "the-gives",
-  "version": "0.0.57",
+  "version": "0.0.58",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",
