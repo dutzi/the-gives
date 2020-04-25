@@ -23,12 +23,14 @@ export function isYouTubeLink(value: string) {
 }
 
 export function getYouTubeVideoId(url: string) {
-  let match = url.match(/^https:\/\/youtu.be\/(.*)$/);
-  if (!match) {
-    match = url.match(/^.*watch\?v=(.*)$/);
-    if (!match) {
-      return;
-    }
+  let match = url.split('?')[0].match(/^https:\/\/youtu.be\/(.*)$/);
+
+  if (match) {
+    return match[1];
   }
-  return match[1];
+
+  if (!match) {
+    const search = new URLSearchParams('?' + url.split('?')[1]);
+    return search.get('v');
+  }
 }

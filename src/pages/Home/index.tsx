@@ -16,6 +16,8 @@ import createRoom from '../../clients/create-room';
 import { IVideo } from '../../types';
 import ProductHunt from '../../components/ProductHunt';
 import useIsMobile from '../../hooks/use-is-mobile';
+import ChromeStoreLink from '../../components/ChromeStoreLink';
+import useTrackPageView from '../../hooks/use-track-page-view';
 
 type TMode = 'home' | 'search' | 'search-immediate';
 
@@ -29,6 +31,7 @@ export default () => {
   const history = useTransitionHistory();
   const [hasQuery] = useState(new URLSearchParams(location.search).has('q'));
   const isMobile = useIsMobile();
+  useTrackPageView();
 
   useTransition({
     handlers: [
@@ -161,6 +164,7 @@ export default () => {
         {/* {!isMobile && !!query && <DarkModeButton />} */}
       </header>
       <main className={styles.main}>
+        {/* {!query && <ChromeStoreLink />} */}
         {!isYouTubeLink(query) && <SearchResults query={query} size="lg" />}
       </main>
       <CookiePolicyMessage />

@@ -117,8 +117,14 @@ export default ({ query, size }: { query: string; size: 'md' | 'lg' }) => {
       {isYoutubeDown && !!videos.length && (
         <div className={styles.quota}>
           {t(
-            "I've exceeded YouTube's quota. Here are some John Oliver clips instead of what you searched for. Sorry."
+            "I've exceeded YouTube's quota. You can still paste YouTube links in search field above."
           )}
+
+          <div className={styles.footnote}>
+            {t(
+              'Here are some John Oliver clips instead of what you searched for. Sorry. 😕'
+            )}
+          </div>
         </div>
       )}
       {videos.map((video) => (

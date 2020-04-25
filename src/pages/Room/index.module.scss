@@ -10,6 +10,14 @@
   --video-width: 640px;
   --video-height: calc(640px * 9 / 16);
 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .spacer {
+    flex: 1;
+  }
+
   @include mobile {
     --video-width: calc(100vw - 2em);
     --video-height: calc((100vw - 2em) * 9 / 16);

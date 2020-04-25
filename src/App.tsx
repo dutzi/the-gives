@@ -9,10 +9,12 @@ import Room from './pages/Room';
 import { version } from '../package.json';
 import FireAuth from './components/FireAuth';
 import { RouteTransitionProvider } from 'react-route-transition';
-import Cookies from './pages/Cookies';
 import initI18n from './i18n';
 import DirectionHelper from './DirectionHelper';
 import About from './pages/About';
+import CreateRoom from './pages/CreateRoom';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 initI18n();
 
@@ -33,11 +35,17 @@ function App() {
               <Route path="/w/:roomId">
                 <Room />
               </Route>
-              <Route path="/cookies">
-                <Cookies />
+              <Route path="/privacy-policy">
+                <PrivacyPolicy />
+              </Route>
+              <Route path="/terms-of-service">
+                <TermsOfService />
               </Route>
               <Route path="/about">
                 <About />
+              </Route>
+              <Route path="/create-room/:provider/:videoId">
+                <CreateRoom />
               </Route>
             </RouteTransitionProvider>
           </Router>

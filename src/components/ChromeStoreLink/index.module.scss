@@ -1,0 +1,22 @@
+.wrapper {
+  background-color: #ffffff;
+  display: inline-flex;
+  color: #000000;
+  align-items: center;
+  padding-inline-end: 1em;
+  text-decoration: none;
+  font-size: 1.1em;
+
+  img {
+    width: 83px;
+    margin-inline-end: 9px;
+  }
+
+  .line1 {
+    margin-bottom: 0.2em;
+  }
+
+  .line2 {
+    font-size: 1.1em;
+  }
+}

@@ -46,7 +46,9 @@ export default () => {
         {t('Contact')}
       </a>
       <span className={styles.middleDot}>·</span>
-      <Link to="/cookies">{t('Cookie Policy')}</Link>
+      <Link to="/privacy-policy">{t('Privacy Policy')}</Link>
+      <span className={styles.middleDot}>·</span>
+      <Link to="/terms-of-service">{t('Terms of Service')}</Link>
       <span className={styles.middleDot}>·</span>
       <div className={styles.languageSelector}>
         {showLanguageSelector && (

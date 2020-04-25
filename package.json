@@ -45,7 +45,6 @@
     "delete-source-maps": "rm ./build/static/js/*.map && rm ./build/static/css/*.map",
     "deploy-hosting": "npm version patch --force && yarn build && yarn delete-source-maps && firebase deploy --only hosting",
     "deploy-functions": "firebase deploy --only functions",
-    "deploy-laravel": "yarn build && yarn delete-source-maps && node ./scripts/deploy",
     "analyze": "source-map-explorer --gzip 'build/static/js/*.js'"
   },
   "eslintConfig": {

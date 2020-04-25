@@ -21,6 +21,8 @@ export async function search({
   nextPageToken?: string;
   useFallback: boolean;
 }) {
+  ga('send', 'event', 'search', query);
+
   await loadClient();
 
   if (useFallback) {

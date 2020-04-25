@@ -30,6 +30,8 @@ import DarkModeButton from '../../components/DarkModeButton';
 import useLocalStorage from '../../hooks/use-local-storage';
 import createRoom from '../../clients/create-room';
 import useIsMobile from '../../hooks/use-is-mobile';
+import useTrackPageView from '../../hooks/use-track-page-view';
+import Footer from '../../components/Footer';
 
 const minChatWidth = 400;
 const maxVideoWidthNoFullscreen = 640;
@@ -54,6 +56,8 @@ export default () => {
 
   const initialVideoWidth = calcVideoWidth(fullscreen === '1');
   const initialVideoHeight = (initialVideoWidth * 9) / 16;
+
+  useTrackPageView();
 
   const [playerSize, setPlayerSize] = useState({
     width: initialVideoWidth,
@@ -133,6 +137,10 @@ export default () => {
 
     // youtube.list(room.video.id).then((res) => console.log(res));
   }, [room]);
+
+  useEffect(() => {
+    ga('send', 'pageview', window.location.pathname);
+  }, []);
 
   async function handleGetRemote() {
     processingRemoteOwner.start();
@@ -330,6 +338,8 @@ export default () => {
           </div>
         )}
       </main>
+      <div className={styles.spacer} />
+      <Footer />
     </div>
   );
 };

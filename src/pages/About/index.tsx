@@ -5,9 +5,11 @@ import { version } from '../../../package.json';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import useTrackPageView from '../../hooks/use-track-page-view';
 
 export default () => {
   const { t } = useTranslation();
+  useTrackPageView();
 
   return (
     <div className={styles.wrapper}>
