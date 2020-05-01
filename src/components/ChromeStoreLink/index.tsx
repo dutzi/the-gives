@@ -8,7 +8,7 @@ export default () => {
   return (
     <a
       className={styles.wrapper}
-      href="https://chrome.google.com/webstore/devconsole/08d26008-0793-4583-bcfd-2715f5c40270/njkgkdbagmmjjahkpdhjfcmaildijnjb/edit?hl=en"
+      href="https://chrome.google.com/webstore/detail/njkgkdbagmmjjahkpdhjfcmaildijnjb"
       target="_blank"
       rel="noopener noreferrer"
     >

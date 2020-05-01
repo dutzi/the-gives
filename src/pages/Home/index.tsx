@@ -164,7 +164,7 @@ export default () => {
         {/* {!isMobile && !!query && <DarkModeButton />} */}
       </header>
       <main className={styles.main}>
-        {/* {!query && <ChromeStoreLink />} */}
+        {!query && <ChromeStoreLink />}
         {!isYouTubeLink(query) && <SearchResults query={query} size="lg" />}
       </main>
       <CookiePolicyMessage />
