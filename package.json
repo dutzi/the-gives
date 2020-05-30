@@ -1,6 +1,6 @@
 {
   "name": "the-gives",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",
@@ -45,6 +45,7 @@
     "delete-source-maps": "rm ./build/static/js/*.map && rm ./build/static/css/*.map",
     "deploy-hosting": "npm version patch --force && yarn build && yarn delete-source-maps && firebase deploy --only hosting",
     "deploy-functions": "firebase deploy --only functions",
+    "deploy": "yarn deploy-hosting && yarn deploy-functions",
     "analyze": "source-map-explorer --gzip 'build/static/js/*.js'"
   },
   "eslintConfig": {
