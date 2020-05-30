@@ -237,9 +237,10 @@ export default () => {
                 data-search-input
                 type="text"
                 placeholder={
-                  isMobile
-                    ? t('Search')
-                    : t('Paste YouTube URL, or search for videos...')
+                  t('Paste YouTube URL')
+                  // isMobile
+                  //   ? t('Search')
+                  //   : t('Paste YouTube URL, or search for videos...')
                 }
                 onKeyDown={handleSearchKeyDown}
               />

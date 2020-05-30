@@ -122,6 +122,7 @@ const YouTubePlayer = (
       playerVars: {
         fs: 0,
         playsinline: 1,
+        autoplay: 1,
       },
       events: {
         onReady: (window as any).onPlayerReady,

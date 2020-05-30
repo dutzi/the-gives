@@ -151,7 +151,11 @@ export default ({ room }: { room?: IRoom }) => {
       //other pc track
       console.log('Got remote track:', event.streams[0]);
 
-      remoteVideoRef.current!.srcObject = event.streams[0];
+      if (!remoteVideoRef.current) {
+        return;
+      }
+
+      remoteVideoRef.current.srcObject = event.streams[0];
       setRemoteStream(event.streams[0]);
     });
 

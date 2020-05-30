@@ -33,32 +33,32 @@ export default () => {
   const isMobile = useIsMobile();
   useTrackPageView();
 
-  useTransition({
-    handlers: [
-      {
-        from: '*',
-        to: '/',
-        onEnter: async () => {
-          await gsap.fromTo(
-            '[data-search-input]',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.5 }
-          );
-        },
-      },
-    ],
-  });
+  // useTransition({
+  //   handlers: [
+  //     {
+  //       from: '*',
+  //       to: '/',
+  //       onEnter: async () => {
+  //         await gsap.fromTo(
+  //           '[data-search-input]',
+  //           { opacity: 0, y: 20 },
+  //           { opacity: 1, y: 0, duration: 0.5 }
+  //         );
+  //       },
+  //     },
+  //   ],
+  // });
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.has('q')) {
-      setQuery(searchParams.get('q')!);
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   const searchParams = new URLSearchParams(location.search);
+  //   if (searchParams.has('q')) {
+  //     setQuery(searchParams.get('q')!);
+  //   }
+  // }, [location]);
 
   useEffect(() => {
     const newMode = query.trim() === '' ? 'home' : 'search';
@@ -67,45 +67,45 @@ export default () => {
     }
   }, [query, mode]);
 
-  useEffect(() => {
-    if (query.trim()) {
-      reactRouterHistory.replace('/?q=' + query);
-    } else {
-      reactRouterHistory.replace('/');
-    }
-  }, [query, reactRouterHistory]);
+  // useEffect(() => {
+  //   if (query.trim()) {
+  //     reactRouterHistory.replace('/?q=' + query);
+  //   } else {
+  //     reactRouterHistory.replace('/');
+  //   }
+  // }, [query, reactRouterHistory]);
 
-  useEffect(() => {
-    if (mode === 'search' || mode === 'search-immediate') {
-      const duration = 0.6;
+  // useEffect(() => {
+  //   if (mode === 'search' || mode === 'search-immediate') {
+  //     const duration = 0.6;
 
-      gsap.timeline().to('[data-logo]', {
-        scale: 0.6,
-        y: -17,
-        duration,
-        ease: Back.easeInOut.config(1.7),
-      });
-      gsap.timeline().to('[data-tagline]', {
-        opacity: 0,
-        pointerEvents: 'none',
-        duration,
-        ease: Back.easeInOut.config(1.7),
-      });
-      gsap.timeline().to('[data-header], [data-content]', {
-        height: 90,
-        duration,
-        ease: Back.easeInOut.config(1.7),
-        delay: 0.2,
-      });
-      gsap.timeline().to('[data-hero]', {
-        opacity: 0,
-        duration,
-        pointerEvents: 'none',
-        ease: Back.easeInOut.config(1.7),
-      });
-    } else {
-    }
-  }, [mode]);
+  //     gsap.timeline().to('[data-logo]', {
+  //       scale: 0.6,
+  //       y: -17,
+  //       duration,
+  //       ease: Back.easeInOut.config(1.7),
+  //     });
+  //     gsap.timeline().to('[data-tagline]', {
+  //       opacity: 0,
+  //       pointerEvents: 'none',
+  //       duration,
+  //       ease: Back.easeInOut.config(1.7),
+  //     });
+  //     gsap.timeline().to('[data-header], [data-content]', {
+  //       height: 90,
+  //       duration,
+  //       ease: Back.easeInOut.config(1.7),
+  //       delay: 0.2,
+  //     });
+  //     gsap.timeline().to('[data-hero]', {
+  //       opacity: 0,
+  //       duration,
+  //       pointerEvents: 'none',
+  //       ease: Back.easeInOut.config(1.7),
+  //     });
+  //   } else {
+  //   }
+  // }, [mode]);
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -150,9 +150,10 @@ export default () => {
                 ref={inputRef}
                 type="text"
                 placeholder={
-                  isMobile
-                    ? t('Paste YouTube URL, or search')
-                    : t('Paste YouTube URL, or search for videos...')
+                  t('Paste YouTube URL')
+                  // isMobile
+                  //   ? t('Paste YouTube URL, or search')
+                  //   : t('Paste YouTube URL, or search for videos...')
                 }
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyDown}
@@ -165,7 +166,7 @@ export default () => {
       </header>
       <main className={styles.main}>
         {!query && <ChromeStoreLink />}
-        {!isYouTubeLink(query) && <SearchResults query={query} size="lg" />}
+        {/* {!isYouTubeLink(query) && <SearchResults query={query} size="lg" />} */}
       </main>
       <CookiePolicyMessage />
       <Footer />
