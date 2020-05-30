@@ -109,11 +109,11 @@
   }
 
   .main {
-    max-width: 980px;
+    width: 980px;
+    max-width: calc(100vw - 4em);
     margin: auto;
     margin-top: 3.5em;
     flex: 1;
-    width: 100%;
   }
 }
 :global([dir='rtl']) .wrapper .header .content {

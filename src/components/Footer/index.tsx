@@ -39,7 +39,7 @@ export default () => {
   return (
     <div className={styles.wrapper}>
       <a
-        href="mailto:dutzi@the.gives"
+        href="mailto:the@dutzi.party"
         target="_blank"
         rel="noreferrer noopener"
       >

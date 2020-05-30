@@ -13,17 +13,23 @@ export default () => {
 
   return (
     <div className={styles.wrapper}>
-      <Link to="/">
-        <Logo />
-      </Link>
-      <p className={styles.version}>
-        {t('Version')} {version}
-      </p>
-      <p>
-        This site makes use of fonts from{' '}
-        <a href="https://fontawesome.com/">Font Awesome</a>.
-      </p>
-      <div className={styles.flex1}></div>
+      <main>
+        <Link to="/">
+          <Logo />
+        </Link>
+        <p className={styles.version}>
+          {t('Version')} {version}
+        </p>
+        <p>
+          Source available <a href="https://github.com/dutzi/the-gives">here</a>
+          .
+        </p>
+        <p>
+          This site makes use of fonts from{' '}
+          <a href="https://fontawesome.com/">Font Awesome</a>.
+        </p>
+        <div className={styles.flex1}></div>
+      </main>
       <Footer />
     </div>
   );

@@ -138,7 +138,7 @@ export default () => {
               <Logo />
             </Link>
           </div>
-          {/* {!isMobile && !query && <ProductHunt />} */}
+          {!isMobile && !query && <ProductHunt />}
           <div data-tagline className={styles.tagline}>
             {t('Watch videos while video chatting with friends.')}
           </div>

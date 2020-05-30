@@ -10,7 +10,7 @@ export default () => {
       className={styles.wrapper}
     >
       <img
-        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=193961&theme=dark"
+        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=204267&theme=dark"
         alt="The Gives - Watch YouTube videos while video chatting with others | Product Hunt Embed"
         style={{ width: '250px', height: '54px' }}
         width="250px"

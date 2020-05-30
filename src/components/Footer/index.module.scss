@@ -1,23 +1,42 @@
+@import '../../partials.module';
+
 .wrapper {
   left: 0px;
   display: flex;
   justify-content: center;
-  margin: 0.5em 0px;
+  margin: 0.5em auto;
   color: var(--text-color-muted);
   flex-wrap: wrap;
 
+  @include mobile {
+    flex-direction: column;
+    margin: 0px 2em 2em;
+  }
+
   .middleDot {
     margin: 0px 0.5em;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   a {
     color: inherit;
     text-decoration: none;
     margin-bottom: 0.5em;
+
+    &:last-child {
+      @include mobile {
+        margin-bottom: 0px;
+      }
+    }
   }
 
   .languageSelector {
     position: relative;
+    margin-bottom: 0.5em;
+
     .languages {
       position: absolute;
       bottom: 1.5em;
