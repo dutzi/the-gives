@@ -14,7 +14,7 @@ import CookiePolicyMessage from '../../components/CookiePolicyMessage';
 import { isYouTubeLink, getYouTubeVideoId } from '../../utils';
 import createRoom from '../../clients/create-room';
 import { IVideo } from '../../types';
-import ProductHunt from '../../components/ProductHunt';
+// import ProductHunt from '../../components/ProductHunt';
 import useIsMobile from '../../hooks/use-is-mobile';
 import ChromeStoreLink from '../../components/ChromeStoreLink';
 import useTrackPageView from '../../hooks/use-track-page-view';
@@ -138,7 +138,7 @@ export default () => {
               <Logo />
             </Link>
           </div>
-          {!isMobile && !query && <ProductHunt />}
+          {/* {!isMobile && !query && <ProductHunt />} */}
           <div data-tagline className={styles.tagline}>
             {t('Watch videos while video chatting with friends.')}
           </div>
